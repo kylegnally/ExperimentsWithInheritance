@@ -10,6 +10,10 @@ namespace cis237_assignment3
     {
         static void Main(string[] args)
         {
+            const int droidListSize = 100;
+            string menuChoice = null;
+            UserInterface aMenu = new UserInterface();
+
         }
     }
 }
