@@ -19,6 +19,11 @@ namespace cis237_assignment3
             this.Material = Color;
         }
 
+        public override string ToString()
+        {
+            return DroidInformation();
+        }
+
         public void CalculateTotalCost()
         {
             throw new NotImplementedException();
