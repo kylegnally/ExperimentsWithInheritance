@@ -10,8 +10,14 @@ namespace cis237_assignment3
     {
         public string Material { get; set; }
         public string Color { get; set; }
-        public string BaseCost { get; set; }
+        public decimal BaseCost { get; set; }
         public decimal TotalCost { get; set; }
+
+        public Droid(string Material, string Color)
+        {
+            this.Material = Material;
+            this.Material = Color;
+        }
 
         public void CalculateTotalCost()
         {
