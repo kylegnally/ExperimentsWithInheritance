@@ -3,7 +3,7 @@
     public class ProtocolDroid : Droid
     {
         private int numberOfLanguages;
-        protected const decimal COST_PER_LANGUAGE = 15.00m;
+        private const decimal COST_PER_LANGUAGE = 15.00m;
 
         public override decimal TotalCost
         {
