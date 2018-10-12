@@ -10,8 +10,10 @@ namespace cis237_assignment3
     {
         private int numberOfLanguages;
 
-        protected const decimal UNIT_BASE_COST = 20.00m;
-        
+        private const decimal UNIT_BASE_COST = 20.00m;
+        //protected const decimal COST_PER_LANGUAGE = 15.00m;
+        protected const string DROID_TYPE = "Protocol";
+
         public override decimal TotalCost
         {
             get { return (UNIT_BASE_COST); }
