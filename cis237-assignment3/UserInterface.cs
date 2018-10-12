@@ -87,6 +87,12 @@ namespace cis237_assignment3
         {
             System.Threading.Thread.Sleep(1500);
         }
+
+        public void Output(string outputString)
+        {
+            Console.WriteLine(outputString);
+        }
+
     }
 }
 

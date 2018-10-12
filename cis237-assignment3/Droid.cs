@@ -6,17 +6,22 @@ using System.Threading.Tasks;
 
 namespace cis237_assignment3
 {
-    abstract class Droid : IDroid
+    public abstract class Droid : IDroid
     {
         public string Material { get; set; }
         public string Color { get; set; }
         public decimal BaseCost { get; set; }
-        public decimal TotalCost { get; set; }
+        public abstract decimal TotalCost { get; set; }
 
         public Droid(string Material, string Color)
         {
             this.Material = Material;
-            this.Material = Color;
+            this.Color = Color;
+        }
+
+        public virtual string DroidInformation()
+        {
+            return Material + " " + Color + " " + TotalCost;
         }
 
         public override string ToString()
@@ -24,10 +29,7 @@ namespace cis237_assignment3
             return DroidInformation();
         }
 
-        public void CalculateTotalCost()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void CalculateTotalCost();
 
     }
 }

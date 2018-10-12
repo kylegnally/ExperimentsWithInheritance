@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace cis237_assignment3
 {
-    class JanitorDroid : UtilityDroid
-    {
-    }
+    //class JanitorDroid : UtilityDroid
+    //{
+    //}
 }

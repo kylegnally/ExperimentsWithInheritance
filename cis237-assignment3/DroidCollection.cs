@@ -16,9 +16,9 @@ namespace cis237_assignment3
         /// Sets the initial position of the array counter to 0 (the beginning of the array).
         /// </summary>
         /// <param name="collectionSize"></param>
-        public DroidCollection(int collectionSize)
+        public DroidCollection()
         {
-            droids = new Droid[collectionSize];
+            droids = new Droid[100];
             collectionPosition = 0;
         }
         
@@ -28,6 +28,12 @@ namespace cis237_assignment3
         //    droids[collectionPosition] = new Droid(id, desc, pack, price, active);
         //    collectionPosition++;
         //}
+
+        public void Add(string material, string color, int numberOfLanguages)
+        {
+            droids[collectionPosition] = new ProtocolDroid(material, color, numberOfLanguages);
+            collectionPosition++;
+        }
 
         /// <summary>
         /// Prints the entire inventory of droids using the ToString() override method of the Beverage class.
