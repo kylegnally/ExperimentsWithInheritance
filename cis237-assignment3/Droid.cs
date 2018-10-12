@@ -17,6 +17,7 @@ namespace cis237_assignment3
 
         protected Droid(string Material, string Color)
         {
+            BaseCost = UNIT_BASE_COST;
             this.Material = Material;
             this.Color = Color;
             if (Material == "Polyskin") BaseCost += 15.0m;

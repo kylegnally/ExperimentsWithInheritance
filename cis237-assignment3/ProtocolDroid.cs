@@ -32,7 +32,7 @@ namespace cis237_assignment3
 
         public override void CalculateTotalCost()
         {
-            TotalCost = BaseCost + UNIT_BASE_COST + (numberOfLanguages * COST_PER_LANGUAGE);
+            TotalCost = BaseCost + (numberOfLanguages * COST_PER_LANGUAGE);
         }
     }
 }
