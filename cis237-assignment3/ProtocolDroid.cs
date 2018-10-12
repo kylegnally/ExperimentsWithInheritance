@@ -9,15 +9,12 @@ namespace cis237_assignment3
     public class ProtocolDroid : Droid
     {
         private int numberOfLanguages;
-
-        private const decimal UNIT_BASE_COST = 20.00m;
-        //protected const decimal COST_PER_LANGUAGE = 15.00m;
-        protected const string DROID_TYPE = "Protocol";
+        protected const decimal COST_PER_LANGUAGE = 15.00m;
 
         public override decimal TotalCost
         {
-            get { return (UNIT_BASE_COST); }
-            set {  }
+            get => BaseCost + (numberOfLanguages * COST_PER_LANGUAGE);
+            set { }
         }
 
         public ProtocolDroid(
@@ -30,12 +27,12 @@ namespace cis237_assignment3
 
         public override string ToString()
         {
-            return base.ToString() + " " + TotalCost.ToString("C");
+            return base.ToString() + " " + TotalCost.ToString("C") + " " + numberOfLanguages + " languages";
         }
 
         public override void CalculateTotalCost()
         {
-            TotalCost = TotalCost + BaseCost;
+            TotalCost = BaseCost + UNIT_BASE_COST + (numberOfLanguages * COST_PER_LANGUAGE);
         }
     }
 }
