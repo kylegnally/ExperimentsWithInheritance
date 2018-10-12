@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace cis237_assignment3
+﻿namespace cis237_assignment3
 {
     public abstract class Droid : IDroid
     {
@@ -15,18 +9,22 @@ namespace cis237_assignment3
         public decimal BaseCost { get; set; }
         public abstract decimal TotalCost { get; set; }
 
-        protected Droid(string Material, string Color)
+        protected Droid(string material, string color)
         {
             BaseCost = UNIT_BASE_COST;
-            this.Material = Material;
-            this.Color = Color;
-            if (Material == "Polyskin") BaseCost += 15.0m;
-            if (Material == "Metaskin") BaseCost += 25.0m;
-            if (Material == "Ceraskin") BaseCost += 50.0m;
-            if (Color == "Black") BaseCost += 10.0m;
-            if (Color == "Red") BaseCost += 30.0m;
-            if (Color == "White") BaseCost += 50.0m;
-            //CalculateTotalCost();
+            this.Material = material;
+            this.Color = color;
+            CalculateSkinAndColorCost(material, color);
+        }
+
+        private void CalculateSkinAndColorCost(string material, string color)
+        {
+            if (material == "Polyskin") BaseCost += 15.0m;
+            if (material == "Metaskin") BaseCost += 25.0m;
+            if (material == "Ceraskin") BaseCost += 50.0m;
+            if (color == "Black") BaseCost += 10.0m;
+            if (color == "Red") BaseCost += 30.0m;
+            if (color == "White") BaseCost += 50.0m;
         }
 
         public virtual string DroidInformation()
