@@ -6,7 +6,49 @@ using System.Threading.Tasks;
 
 namespace cis237_assignment3
 {
-    //class AstromechDroid : UtilityDroid
-    //{
-    //}
+    class AstromechDroid : UtilityDroid
+    {
+        private bool fireExtinguisher;
+        private int numberOfShips;
+
+        private const decimal EXTINGUISHER_COST = 35.0m;
+        private const decimal SHIPS_COST = 50.0m;
+
+        public override decimal TotalCost { get; set; }
+
+        public AstromechDroid(
+            string material,
+            string color,
+            bool toolBox,
+            bool computerConnection,
+            bool arm,
+            bool fireExtinguisher,
+            int numberOfShips) : base (
+            material,
+            color,
+            toolBox,
+            computerConnection,
+            arm)
+        {
+            this.fireExtinguisher = fireExtinguisher;
+            this.numberOfShips = numberOfShips;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString()
+                   + " Fire extinguisher "
+                   + fireExtinguisher
+                   + " number of ships "
+                   + numberOfShips
+                   + " ";
+        }
+
+        public override void CalculateTotalCost()
+        {
+            if (fireExtinguisher) BaseCost += EXTINGUISHER_COST;
+            BaseCost += (numberOfShips * SHIPS_COST);
+            TotalCost = BaseCost;
+        }
+    }
 }

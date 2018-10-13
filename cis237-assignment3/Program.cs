@@ -19,7 +19,8 @@ namespace cis237_assignment3
             //droids[2] = new ProtocolDroid("Ceraskin", "White", 1); // 135
             //droids[3] = new ProtocolDroid("Polyskin", "Red", 4); // 125
             //droids[4] = new UtilityDroid("Ceraskin", "Red", true, true, false); // 135
-            droids[0] = new JanitorDroid("Polyskin", "Black", true, false, false, true, false); // 75
+            //droids[5] = new JanitorDroid("Polyskin", "Black", true, false, false, true, false); // 75
+            droids[6] = new AstromechDroid("Polyskin", "White", true, false, false, true, 3);
 
             foreach (Droid droid in droids)
             {
