@@ -7,7 +7,7 @@
 
         public override decimal TotalCost
         {
-            get => BaseCost;
+            get => BaseCost; // this is why TotalCost is increasing. DONT! 
             set => BaseCost = value;
         }
 
