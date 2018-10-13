@@ -5,14 +5,7 @@
         private int numberOfLanguages;
         private const decimal COST_PER_LANGUAGE = 15.00m;
 
-        public override decimal TotalCost
-        {
-            //get => BaseCost; // this is why TotalCost is increasing. DONT! 
-            //set => BaseCost = value;
-
-            get;
-            set;
-        }
+        public override decimal TotalCost { get; set; }
 
         public ProtocolDroid(
             string material, 

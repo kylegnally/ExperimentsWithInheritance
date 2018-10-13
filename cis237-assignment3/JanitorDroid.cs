@@ -15,11 +15,7 @@ namespace cis237_assignment3
         private const decimal TRASH_COST = 15.0m;
         private const decimal VAC_COST = 15.0m;
 
-        public override decimal TotalCost
-        {
-            get => BaseCost;
-            set => BaseCost = value;
-        }
+        public override decimal TotalCost { get; set; }
 
         public JanitorDroid(
             string material,
@@ -42,27 +38,18 @@ namespace cis237_assignment3
         public override string ToString()
         {
             return base.ToString()
-                   + " "
-                   + TotalCost.ToString("C")
-                   + " " + " toolbox: "
-                   + toolBox
-                   + " computer connection: "
-                   + computerConnection
-                   + " arm: "
-                   + arm + " trash compactor " 
-                   + trashCompactor 
-                   + " vacuum " 
+                   + " trash compactor "
+                   + trashCompactor
+                   + " vacuum "
+                   + vacuum
                    + " ";
         }
 
         public override void CalculateTotalCost()
         {
-            //if (toolBox) TotalCost += TOOLBOX_COST;
-            //if (computerConnection) TotalCost += COMPUTER_CONNECTION_COST;
-            //if (arm) TotalCost += ARM_COST;
-            if (trashCompactor) TotalCost += TRASH_COST;
-            if (vacuum) TotalCost += VAC_COST;
-            //TotalCost = BaseCost + optionsCost;
+            if (trashCompactor) BaseCost += TRASH_COST;
+            if (vacuum) BaseCost += VAC_COST;
+            TotalCost = BaseCost;
         }
     }
 }

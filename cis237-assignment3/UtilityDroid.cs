@@ -12,20 +12,11 @@ namespace cis237_assignment3
         protected bool computerConnection;
         protected bool arm;
 
-        //protected decimal optionsCost;
-
         protected const decimal TOOLBOX_COST = 15.0m;
         protected const decimal COMPUTER_CONNECTION_COST = 20.0m;
         protected const decimal ARM_COST = 10.0m;
 
-        public override decimal TotalCost
-        {
-            ////get => BaseCost + optionsCost;
-            //get => BaseCost;
-            //set => BaseCost = value;
-            get;
-            set;
-        }
+        public override decimal TotalCost { get; set; }
 
         public UtilityDroid(
             string material, 
@@ -37,10 +28,7 @@ namespace cis237_assignment3
             this.toolBox = toolBox;
             this.computerConnection = computerConnection;
             this.arm = arm;
-            //if (toolBox) BaseCost += TOOLBOX_COST;
-            //if (computerConnection) BaseCost += COMPUTER_CONNECTION_COST;
-            //if (arm) BaseCost += ARM_COST;
-            //CalculateOptions(toolBox, computerConnection, arm);
+            CalculateSubtotal();
         }
 
         public override string ToString()
@@ -56,18 +44,15 @@ namespace cis237_assignment3
                    + arm;
         }
 
-        //private void CalculateOptions(bool toolBox, bool computerConnection, bool arm)
-        //{
-        //    if (toolBox) optionsCost += TOOLBOX_COST;
-        //    if (computerConnection) optionsCost += COMPUTER_CONNECTION_COST;
-        //    if (arm) optionsCost += ARM_COST;
-        //}
+        private void CalculateSubtotal()
+        {
+            if (this.toolBox) BaseCost += TOOLBOX_COST;
+            if (this.computerConnection) BaseCost += COMPUTER_CONNECTION_COST;
+            if (this.arm) BaseCost += ARM_COST;
+        }
 
         public override void CalculateTotalCost()
         {
-            if (toolBox) BaseCost += TOOLBOX_COST;
-            if (computerConnection) BaseCost += COMPUTER_CONNECTION_COST;
-            if (arm) BaseCost += ARM_COST;
             TotalCost = BaseCost;
         }
     }
