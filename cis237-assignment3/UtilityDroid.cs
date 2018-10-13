@@ -8,20 +8,21 @@ namespace cis237_assignment3
 {
     class UtilityDroid : Droid
     {
-        private bool toolBox;
-        private bool computerConnection;
-        private bool arm;
+        protected bool toolBox;
+        protected bool computerConnection;
+        protected bool arm;
 
-        private decimal optionsCost;
+        //protected decimal optionsCost;
 
-        private const decimal TOOLBOX_COST = 15.0m;
-        private const decimal COMPUTER_CONNECTION_COST = 20.0m;
-        private const decimal ARM_COST = 10.0m;
+        protected const decimal TOOLBOX_COST = 15.0m;
+        protected const decimal COMPUTER_CONNECTION_COST = 20.0m;
+        protected const decimal ARM_COST = 10.0m;
 
         public override decimal TotalCost
         {
-            get => BaseCost + optionsCost;
-            set { }
+            //get => BaseCost + optionsCost;
+            get => BaseCost;
+            set => BaseCost = value;
         }
 
         public UtilityDroid(
@@ -34,29 +35,38 @@ namespace cis237_assignment3
             this.toolBox = toolBox;
             this.computerConnection = computerConnection;
             this.arm = arm;
-            CalculateOptions(toolBox, computerConnection, arm);
+            if (toolBox) TotalCost += TOOLBOX_COST;
+            if (computerConnection) TotalCost += COMPUTER_CONNECTION_COST;
+            if (arm) TotalCost += ARM_COST;
+            //CalculateOptions(toolBox, computerConnection, arm);
         }
 
         public override string ToString()
         {
-            return base.ToString() + " " + 
-                   TotalCost.ToString("C") + " " 
-                   + " toolbox: " + toolBox.ToString() + 
-                " computer connection: " 
-                + computerConnection.ToString() + 
-                   " arm: " + arm.ToString();
+            return base.ToString() 
+                   + " " 
+                   + TotalCost.ToString("C") 
+                   + " " + " toolbox: " 
+                   + toolBox 
+                   + " computer connection: " 
+                   + computerConnection 
+                   + " arm: " 
+                   + arm;
         }
 
-        private void CalculateOptions(bool tool, bool comp, bool arm)
-        {
-            if (tool) optionsCost += TOOLBOX_COST;
-            if (comp) optionsCost += COMPUTER_CONNECTION_COST;
-            if (arm) optionsCost += ARM_COST;
-        }
+        //private void CalculateOptions(bool toolBox, bool computerConnection, bool arm)
+        //{
+        //    if (toolBox) optionsCost += TOOLBOX_COST;
+        //    if (computerConnection) optionsCost += COMPUTER_CONNECTION_COST;
+        //    if (arm) optionsCost += ARM_COST;
+        //}
 
         public override void CalculateTotalCost()
         {
-            TotalCost = BaseCost + optionsCost;
+            //if (toolBox) TotalCost += TOOLBOX_COST;
+            //if (computerConnection) TotalCost += COMPUTER_CONNECTION_COST;
+            //if (arm) TotalCost += ARM_COST;
+            //TotalCost = BaseCost + optionsCost;
         }
     }
 }
