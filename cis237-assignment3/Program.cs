@@ -14,12 +14,12 @@ namespace cis237_assignment3
             string outputString = "";
             UserInterface aMenu = new UserInterface();
             IDroid[] droids = new IDroid[10];
-            //droids[0] = new ProtocolDroid("Polyskin", "Black", 3); // 90
-            //droids[1] = new ProtocolDroid("Metaskin", "Black", 2); // 85
-            //droids[2] = new ProtocolDroid("Ceraskin", "White", 1); // 135
-            //droids[3] = new ProtocolDroid("Polyskin", "Red", 4); // 125
+            droids[0] = new ProtocolDroid("Polyskin", "Black", 3); // 90
+            droids[1] = new ProtocolDroid("Metaskin", "Black", 2); // 85
+            droids[2] = new ProtocolDroid("Ceraskin", "White", 1); // 135
+            droids[3] = new ProtocolDroid("Polyskin", "Red", 4); // 125
             droids[4] = new UtilityDroid("Ceraskin", "Red", true, true, false); // 135
-            //droids[5] = new JanitorDroid("Polyskin", "Black", true, false, false, true, false); // 75
+            droids[5] = new JanitorDroid("Polyskin", "Black", true, false, false, true, false); // 75
 
             foreach (Droid droid in droids)
             {
