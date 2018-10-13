@@ -20,9 +20,11 @@ namespace cis237_assignment3
 
         public override decimal TotalCost
         {
-            //get => BaseCost + optionsCost;
-            get => BaseCost;
-            set => BaseCost = value;
+            ////get => BaseCost + optionsCost;
+            //get => BaseCost;
+            //set => BaseCost = value;
+            get;
+            set;
         }
 
         public UtilityDroid(
@@ -35,9 +37,9 @@ namespace cis237_assignment3
             this.toolBox = toolBox;
             this.computerConnection = computerConnection;
             this.arm = arm;
-            if (toolBox) TotalCost += TOOLBOX_COST;
-            if (computerConnection) TotalCost += COMPUTER_CONNECTION_COST;
-            if (arm) TotalCost += ARM_COST;
+            //if (toolBox) BaseCost += TOOLBOX_COST;
+            //if (computerConnection) BaseCost += COMPUTER_CONNECTION_COST;
+            //if (arm) BaseCost += ARM_COST;
             //CalculateOptions(toolBox, computerConnection, arm);
         }
 
@@ -63,10 +65,10 @@ namespace cis237_assignment3
 
         public override void CalculateTotalCost()
         {
-            //if (toolBox) TotalCost += TOOLBOX_COST;
-            //if (computerConnection) TotalCost += COMPUTER_CONNECTION_COST;
-            //if (arm) TotalCost += ARM_COST;
-            //TotalCost = BaseCost + optionsCost;
+            if (toolBox) BaseCost += TOOLBOX_COST;
+            if (computerConnection) BaseCost += COMPUTER_CONNECTION_COST;
+            if (arm) BaseCost += ARM_COST;
+            TotalCost = BaseCost;
         }
     }
 }
