@@ -10,12 +10,14 @@ namespace cis237_assignment3
     {
         string menuString;
 
+        protected string Droid { get; set; }
+
         /// <summary>
         /// Displays the program menu.
         /// Returns the menu as a string.
         /// </summary>
         /// <returns>string</returns>
-        public string DisplayMenu()
+        public string MainMenu()
         {
             Console.ResetColor();
             menuString = "\n\n\n\n\n\t\t\t\tWelcome to LookSir Droids!\n\n" +
@@ -25,7 +27,7 @@ namespace cis237_assignment3
                 "\t\t\t\t(Q) Quit\n\n";
             return menuString;
         }
-
+        
         /// <summary>
         /// Message displayed when the user prints the beverage list.
         /// </summary>

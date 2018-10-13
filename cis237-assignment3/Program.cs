@@ -19,7 +19,7 @@ namespace cis237_assignment3
             void DisplayMenu()
             {
                 Console.Clear();
-                Console.Write(aMenu.DisplayMenu());
+                Console.Write(aMenu.MainMenu());
                 Console.Write("\n\n\t\t\t\t");
                 menuChoice = Console.ReadLine();
                 HandleInput(menuChoice);
@@ -51,7 +51,7 @@ namespace cis237_assignment3
 
                     case "A":
                         // Add to the list. Burp if the list isn't loaded yet.
-                        
+                        //collection.Add(aMenu.Droid);
                         aMenu.Pause();
                         DisplayMenu();
                         break;
