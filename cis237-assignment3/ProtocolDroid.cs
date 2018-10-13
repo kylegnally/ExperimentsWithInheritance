@@ -7,8 +7,11 @@
 
         public override decimal TotalCost
         {
-            get => BaseCost; // this is why TotalCost is increasing. DONT! 
-            set => BaseCost = value;
+            //get => BaseCost; // this is why TotalCost is increasing. DONT! 
+            //set => BaseCost = value;
+
+            get;
+            set;
         }
 
         public ProtocolDroid(
@@ -26,12 +29,6 @@
 
         public override void CalculateTotalCost()
         {
-            if (base.Material == "Polyskin") BaseCost += 15.0m;
-            if (base.Material == "Metaskin") BaseCost += 25.0m;
-            if (base.Material == "Ceraskin") BaseCost += 50.0m;
-            if (base.Color == "Black") BaseCost += 10.0m;
-            if (base.Color == "Red") BaseCost += 30.0m;
-            if (base.Color == "White") BaseCost += 50.0m;
             TotalCost = BaseCost + (numberOfLanguages * COST_PER_LANGUAGE);
         }
     }
