@@ -20,8 +20,8 @@ namespace cis237_assignment3
             Console.ResetColor();
             menuString = "\n\n\n\n\n\t\t\t\tWelcome to LookSir Droids!\n\n" +
                 "\t\t\t\tPlease select an option: \n\n" +
-                "\t\t\t\t(P) Print the beverage list\n" +
-                "\t\t\t\t(A) Add a beverage to the beverage list\n" +
+                "\t\t\t\t(A) Add a droid to the list\n" +
+                "\t\t\t\t(P) Print the list of droids currently in inventory\n" +
                 "\t\t\t\t(Q) Quit\n\n";
             return menuString;
         }
@@ -34,6 +34,17 @@ namespace cis237_assignment3
         {
             string printListMessage = "\n\n\t\t\t\tYou chose to (P)rint the droid list.";
             return printListMessage;
+        }
+
+        public void PrintDroidList(string[] allDroids)
+        {
+            for (int i = 0; i < allDroids.Length; i++)
+            {
+                if (allDroids[i] != null)
+                {
+                    Console.WriteLine(allDroids[i]);
+                }
+            }
         }
 
         /// <summary>

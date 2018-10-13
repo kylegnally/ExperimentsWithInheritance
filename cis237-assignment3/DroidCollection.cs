@@ -21,7 +21,15 @@ namespace cis237_assignment3
             droids = new Droid[100];
             collectionPosition = 0;
         }
-        
+
+        public void Add(string material, 
+            string color, 
+            int numberOfLanguages)
+        {
+            droids[collectionPosition] = new ProtocolDroid(material, color, numberOfLanguages);
+            collectionPosition++;
+        }
+
         // There should be four Add methods here - one for each Droid type
         //public void Add(string id, string desc, string pack, decimal price, bool active)
         //{
@@ -29,11 +37,61 @@ namespace cis237_assignment3
         //    collectionPosition++;
         //}
 
-        public void Add(string material, string color, int numberOfLanguages)
+        public void Add(
+            string material,
+            string color,
+            bool toolBox,
+            bool computerConnection,
+            bool arm)
         {
-            droids[collectionPosition] = new ProtocolDroid(material, color, numberOfLanguages);
+            droids[collectionPosition] = new UtilityDroid(material, 
+                color, 
+                toolBox, 
+                computerConnection, 
+                arm);
             collectionPosition++;
         }
+
+        public void Add(
+            string material,
+            string color,
+            bool toolBox,
+            bool computerConnection,
+            bool arm,
+            bool trashCompactor,
+            bool vacuum)
+        {
+            droids[collectionPosition] =
+                new JanitorDroid(material, 
+                    color, 
+                    toolBox, 
+                    computerConnection, 
+                    arm, 
+                    trashCompactor, 
+                    vacuum);
+            collectionPosition++;
+        }
+
+        public void Add(
+            string material,
+            string color,
+            bool toolBox,
+            bool computerConnection,
+            bool arm,
+            bool fireExtinguisher,
+            int numberOfShips)
+        {
+            droids[collectionPosition] =
+                new AstromechDroid(material,
+                    color,
+                    toolBox,
+                    computerConnection,
+                    arm,
+                    fireExtinguisher,
+                    numberOfShips);
+            collectionPosition++;
+        }
+
 
         /// <summary>
         /// Prints the entire inventory of droids using the ToString() override method of the Beverage class.
