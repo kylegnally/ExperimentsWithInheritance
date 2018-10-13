@@ -8,13 +8,13 @@ namespace cis237_assignment3
 {
     class UtilityDroid : Droid
     {
-        protected bool toolBox;
-        protected bool computerConnection;
-        protected bool arm;
+        private bool toolBox;
+        private bool computerConnection;
+        private bool arm;
 
-        protected const decimal TOOLBOX_COST = 15.0m;
-        protected const decimal COMPUTER_CONNECTION_COST = 20.0m;
-        protected const decimal ARM_COST = 10.0m;
+        private const decimal TOOLBOX_COST = 15.0m;
+        private const decimal COMPUTER_CONNECTION_COST = 20.0m;
+        private const decimal ARM_COST = 10.0m;
 
         public override decimal TotalCost { get; set; }
 

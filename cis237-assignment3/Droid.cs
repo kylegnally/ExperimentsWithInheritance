@@ -3,17 +3,17 @@
     public abstract class Droid : IDroid
     {
         // Basic costs for all droids
-        protected const decimal UNIT_BASE_COST = 20.00m;
-        protected const decimal POLYSKIN_MAT_COST = 15.0m;
-        protected const decimal METASKIN_MAT_COST = 25.0m;
-        protected const decimal CERASKIN_MAT_COST = 50.0m;
-        protected const decimal COLOR_BLACK_COST = 10.0m;
-        protected const decimal COLOR_RED_COST = 10.0m;
-        protected const decimal COLOR_WHITE_COST = 10.0m;
+        private const decimal UNIT_BASE_COST = 20.00m;
+        private const decimal POLYSKIN_MAT_COST = 15.0m;
+        private const decimal METASKIN_MAT_COST = 25.0m;
+        private const decimal CERASKIN_MAT_COST = 50.0m;
+        private const decimal COLOR_BLACK_COST = 10.0m;
+        private const decimal COLOR_RED_COST = 10.0m;
+        private const decimal COLOR_WHITE_COST = 10.0m;
 
         // properties shared by all droids
-        protected string Material { get; set; }
-        protected string Color { get; set; }
+        private string Material { get; }
+        private string Color { get; }
         protected decimal BaseCost { get; set; }
         public abstract decimal TotalCost { get; set; }
 

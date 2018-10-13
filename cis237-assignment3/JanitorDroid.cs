@@ -11,7 +11,7 @@ namespace cis237_assignment3
     {
         private bool trashCompactor;
         private bool vacuum;
-
+       
         private const decimal TRASH_COST = 15.0m;
         private const decimal VAC_COST = 15.0m;
 
