@@ -47,14 +47,13 @@ namespace cis237_assignment3
                    " arm: " + arm.ToString();
         }
 
-        public void CalculateOptions(bool tool, bool comp, bool arm)
+        private void CalculateOptions(bool tool, bool comp, bool arm)
         {
             if (tool) optionsCost += TOOLBOX_COST;
             if (comp) optionsCost += COMPUTER_CONNECTION_COST;
             if (arm) optionsCost += ARM_COST;
         }
 
-        //TODO figure this out
         public override void CalculateTotalCost()
         {
             TotalCost = BaseCost + optionsCost;
