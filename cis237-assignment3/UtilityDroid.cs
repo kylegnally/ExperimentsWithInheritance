@@ -12,13 +12,15 @@ namespace cis237_assignment3
         private bool computerConnection;
         private bool arm;
 
+        private decimal optionsCost;
+
         private const decimal TOOLBOX_COST = 15.0m;
         private const decimal COMPUTER_CONNECTION_COST = 20.0m;
         private const decimal ARM_COST = 10.0m;
 
         public override decimal TotalCost
         {
-            get => BaseCost + TOOLBOX_COST + COMPUTER_CONNECTION_COST + ARM_COST;
+            get => BaseCost + optionsCost;
             set { }
         }
 
@@ -45,10 +47,17 @@ namespace cis237_assignment3
                    " arm: " + arm.ToString();
         }
 
+        public void CalculateOptions(bool tool, bool comp, bool arm)
+        {
+            if (tool) optionsCost += TOOLBOX_COST;
+            if (comp) optionsCost += COMPUTER_CONNECTION_COST;
+            if (arm) optionsCost += ARM_COST;
+        }
+
         //TODO figure this out
         public override void CalculateTotalCost()
         {
-            //TotalCost = BaseCost + (numberOfLanguages * COST_PER_LANGUAGE);
+            TotalCost = BaseCost + optionsCost;
         }
     }
 }
