@@ -17,7 +17,13 @@
 
         public override string ToString()
         {
-            return base.ToString() + " " + TotalCost.ToString("C") + " " + numberOfLanguages + " languages";
+            return base.ToString() 
+                   + " " 
+                   + numberOfLanguages 
+                   + " languages" 
+                   + " " 
+                   + " PRICE:   " 
+                   + TotalCost.ToString("C");
         }
 
         public override void CalculateTotalCost()

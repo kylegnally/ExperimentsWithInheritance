@@ -42,7 +42,9 @@ namespace cis237_assignment3
                    + trashCompactor
                    + " vacuum "
                    + vacuum
-                   + " ";
+                   + " " 
+                   + " PRICE:   " 
+                   + TotalCost.ToString("C");
         }
 
         public override void CalculateTotalCost()

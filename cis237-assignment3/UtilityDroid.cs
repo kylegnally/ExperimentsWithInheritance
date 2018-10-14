@@ -41,7 +41,10 @@ namespace cis237_assignment3
                    + " computer connection: " 
                    + computerConnection 
                    + " arm: " 
-                   + arm;
+                   + arm 
+                   + " "
+                   + " PRICE:   "
+                   + TotalCost.ToString("C"); ;
         }
 
         private void CalculateSubtotal()

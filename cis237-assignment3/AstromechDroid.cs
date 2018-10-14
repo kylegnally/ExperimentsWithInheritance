@@ -41,7 +41,9 @@ namespace cis237_assignment3
                    + fireExtinguisher
                    + " number of ships "
                    + numberOfShips
-                   + " ";
+                   + " "
+                   + " PRICE:   "
+                   + TotalCost.ToString("C"); ;
         }
 
         public override void CalculateTotalCost()

@@ -9,6 +9,7 @@ namespace cis237_assignment3
     class DroidCollection
     {
         Droid[] droids;
+        private decimal[] droidPrices;
         int collectionPosition;
 
         /// <summary>
@@ -19,6 +20,7 @@ namespace cis237_assignment3
         public DroidCollection()
         {
             droids = new Droid[100];
+            droidPrices = new decimal[100];
             collectionPosition = 0;
         }
 
@@ -26,7 +28,11 @@ namespace cis237_assignment3
             string color, 
             int numberOfLanguages)
         {
-            droids[collectionPosition] = new ProtocolDroid(material, color, numberOfLanguages);
+            droids[collectionPosition] = new ProtocolDroid(
+                material, 
+                color, 
+                numberOfLanguages);
+            CalculateCostAndAddToPriceArray();
             collectionPosition++;
         }
 
@@ -44,11 +50,13 @@ namespace cis237_assignment3
             bool computerConnection,
             bool arm)
         {
-            droids[collectionPosition] = new UtilityDroid(material, 
+            droids[collectionPosition] = new UtilityDroid(
+                material, 
                 color, 
                 toolBox, 
                 computerConnection, 
                 arm);
+            CalculateCostAndAddToPriceArray();
             collectionPosition++;
         }
 
@@ -69,6 +77,7 @@ namespace cis237_assignment3
                     arm, 
                     trashCompactor, 
                     vacuum);
+            CalculateCostAndAddToPriceArray();
             collectionPosition++;
         }
 
@@ -89,7 +98,14 @@ namespace cis237_assignment3
                     arm,
                     fireExtinguisher,
                     numberOfShips);
+            CalculateCostAndAddToPriceArray();
             collectionPosition++;
+        }
+
+        private void CalculateCostAndAddToPriceArray()
+        {
+            droids[collectionPosition].CalculateTotalCost();
+            droidPrices[collectionPosition] = droids[collectionPosition].TotalCost;
         }
 
 
@@ -106,7 +122,7 @@ namespace cis237_assignment3
             {
                 if (droids[i] != null)
                 {
-                    allDroids[i] = "\t\t\t\t" + droids[i].ToString();
+                    allDroids[i] = droids[i].ToString() + Environment.NewLine;
                 }
             }
 
