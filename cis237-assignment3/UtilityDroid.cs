@@ -8,6 +8,8 @@ namespace cis237_assignment3
 {
     class UtilityDroid : Droid
     {
+        private const string NAME = "Utility Droid";
+
         private bool toolBox;
         private bool computerConnection;
         private bool arm;
@@ -34,11 +36,12 @@ namespace cis237_assignment3
         public override string ToString()
         {
             return base.ToString() 
+                   + " "
+                   + NAME
                    + " " 
-                   + TotalCost.ToString("C") 
-                   + " " + " toolbox: " 
+                   + " toolbox: " 
                    + toolBox 
-                   + " computer connection: " 
+                   + " comp cnxn: " 
                    + computerConnection 
                    + " arm: " 
                    + arm 

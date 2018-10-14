@@ -9,18 +9,11 @@ namespace cis237_assignment3
     class DroidCollection
     {
         Droid[] droids;
-        private decimal[] droidPrices;
         int collectionPosition;
 
-        /// <summary>
-        /// Creates a new droids array of type Beverage and of the size passed into it.
-        /// Sets the initial position of the array counter to 0 (the beginning of the array).
-        /// </summary>
-        /// <param name="collectionSize"></param>
         public DroidCollection()
         {
             droids = new Droid[100];
-            droidPrices = new decimal[100];
             collectionPosition = 0;
         }
 
@@ -32,16 +25,9 @@ namespace cis237_assignment3
                 material, 
                 color, 
                 numberOfLanguages);
-            CalculateCostAndAddToPriceArray();
+            droids[collectionPosition].CalculateTotalCost();
             collectionPosition++;
         }
-
-        // There should be four Add methods here - one for each Droid type
-        //public void Add(string id, string desc, string pack, decimal price, bool active)
-        //{
-        //    droids[collectionPosition] = new Droid(id, desc, pack, price, active);
-        //    collectionPosition++;
-        //}
 
         public void Add(
             string material,
@@ -56,7 +42,7 @@ namespace cis237_assignment3
                 toolBox, 
                 computerConnection, 
                 arm);
-            CalculateCostAndAddToPriceArray();
+            droids[collectionPosition].CalculateTotalCost();
             collectionPosition++;
         }
 
@@ -77,7 +63,7 @@ namespace cis237_assignment3
                     arm, 
                     trashCompactor, 
                     vacuum);
-            CalculateCostAndAddToPriceArray();
+            droids[collectionPosition].CalculateTotalCost();
             collectionPosition++;
         }
 
@@ -98,22 +84,10 @@ namespace cis237_assignment3
                     arm,
                     fireExtinguisher,
                     numberOfShips);
-            CalculateCostAndAddToPriceArray();
+            droids[collectionPosition].CalculateTotalCost();
             collectionPosition++;
         }
 
-        private void CalculateCostAndAddToPriceArray()
-        {
-            droids[collectionPosition].CalculateTotalCost();
-            droidPrices[collectionPosition] = droids[collectionPosition].TotalCost;
-        }
-
-
-        /// <summary>
-        /// Prints the entire inventory of droids using the ToString() override method of the Beverage class.
-        /// Returns the entire inventory as a string[].
-        /// </summary>
-        /// <returns>string[]</returns>
         public string[] PrintTheDroidsInventory()
         {
             string[] allDroids = new string[collectionPosition];
