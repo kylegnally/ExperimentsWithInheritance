@@ -93,7 +93,7 @@ namespace cis237_assignment3
             return droidAdded;
         }
 
-        public void DroidSelection()
+        public string DroidSelection()
         {
             Console.ResetColor();
             Console.Write("\n\n\n\n\n\t\t\t\t--- SELECT A DROID TYPE ---\n\n" +
@@ -101,40 +101,41 @@ namespace cis237_assignment3
                           "\t\t\t\t(U) Utility Droid\n" +
                           "\t\t\t\t(J) Janitor Droid\n" +
                           "\t\t\t\t(A) Astromech Droid\n\n");
-
-            Console.Write("\n\n\t\t\t\t");
-            string droidType = Console.ReadLine().ToUpper();
-            switch (droidType)
-            {
-                case "P":
-                    BuildProtocolDroid();
-                    break;
-                    //string[] protocol = aMenu.AddAProtocolDroid();
-                //    collection.Add(material, color, languages);
-                //    Console.WriteLine(aMenu.DroidAdded());
-                //    break;
-                //case "U":
-                //    string[] utility = aMenu.AddAUtilityDroid();
-                //    collection.Add(utility[0], utility[1], bool.Parse(utility[2]), bool.Parse(utility[3]), bool.Parse(utility[4]));
-                //    Console.WriteLine(aMenu.DroidAdded());
-                //    break;
-                //case "J":
-                //    string[] janitor = aMenu.AddAJanitorDroid();
-                //    collection.Add(janitor[0], janitor[1], bool.Parse(janitor[2]), bool.Parse(janitor[3]), bool.Parse(janitor[4]), bool.Parse(janitor[5]), bool.Parse(janitor[6]));
-                //    Console.WriteLine(aMenu.DroidAdded());
-                //    break;
-                //case "A":
-                //    string[] astromech = aMenu.AddAnAstromechDroid();
-                //    collection.Add(astromech[0], astromech[1], bool.Parse(astromech[2]), bool.Parse(astromech[3]), bool.Parse(astromech[4]), bool.Parse(astromech[5]), int.Parse(astromech[6]));
-                //    Console.WriteLine(aMenu.DroidAdded());
-                //    break;
-                default:
-                    Console.WriteLine(InvalidOptionMessage());
-                    break;
-            }
+            return menuString;
         }
 
-        private string[] BuildProtocolDroid()
+            //string droidType = Console.ReadLine().ToUpper();
+            //switch (droidType)
+            //{
+            //    case "P":
+            //        BuildProtocolDroid();
+            //        break;
+            //        //string[] protocol = aMenu.AddAProtocolDroid();
+            //    //    collection.Add(material, color, languages);
+            //    //    Console.WriteLine(aMenu.DroidAdded());
+            //    //    break;
+            //    //case "U":
+            //    //    string[] utility = aMenu.AddAUtilityDroid();
+            //    //    collection.Add(utility[0], utility[1], bool.Parse(utility[2]), bool.Parse(utility[3]), bool.Parse(utility[4]));
+            //    //    Console.WriteLine(aMenu.DroidAdded());
+            //    //    break;
+            //    //case "J":
+            //    //    string[] janitor = aMenu.AddAJanitorDroid();
+            //    //    collection.Add(janitor[0], janitor[1], bool.Parse(janitor[2]), bool.Parse(janitor[3]), bool.Parse(janitor[4]), bool.Parse(janitor[5]), bool.Parse(janitor[6]));
+            //    //    Console.WriteLine(aMenu.DroidAdded());
+            //    //    break;
+            //    //case "A":
+            //    //    string[] astromech = aMenu.AddAnAstromechDroid();
+            //    //    collection.Add(astromech[0], astromech[1], bool.Parse(astromech[2]), bool.Parse(astromech[3]), bool.Parse(astromech[4]), bool.Parse(astromech[5]), int.Parse(astromech[6]));
+            //    //    Console.WriteLine(aMenu.DroidAdded());
+            //    //    break;
+            //    default:
+            //        Console.WriteLine(InvalidOptionMessage());
+            //        break;
+            //}
+        //}
+
+        public string[] BuildProtocolDroid()
         {
             Console.Clear();
             Console.Write(MaterialSelection());
