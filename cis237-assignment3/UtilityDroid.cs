@@ -32,6 +32,11 @@ namespace cis237_assignment3
             CalculateSubtotal();
         }
 
+        public string BasicInformation()
+        {
+            return base.ToString();
+        }
+
         public override string ToString()
         {
             return base.ToString() 
@@ -44,7 +49,7 @@ namespace cis237_assignment3
                    + arm 
                    + " "
                    + " PRICE:   "
-                   + TotalCost.ToString("C"); ;
+                   + TotalCost.ToString("C");
         }
 
         private void CalculateSubtotal()
