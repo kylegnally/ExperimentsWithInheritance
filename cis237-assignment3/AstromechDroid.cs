@@ -11,6 +11,7 @@ namespace cis237_assignment3
 
         private bool fireExtinguisher;
         private int numberOfShips;
+        private const string NAME = "Astromech Droid";
 
         private const decimal EXTINGUISHER_COST = 35.0m;
         private const decimal SHIPS_COST = 50.0m;
@@ -39,16 +40,15 @@ namespace cis237_assignment3
 
         public override string ToString()
         {
-            DroidInformation();
             return base.ToString()
                    + " "
                    + " extinguisher: "
                    + fireExtinguisher
                    + " ships: "
-                   + numberOfShips
-                   + " "
-                   + " PRICE:   "
-                   + TotalCost.ToString("C"); ;
+                   + numberOfShips;
+            //+ " "
+            //+ " PRICE:   "
+            //+ TotalCost.ToString("C"); ;
         }
 
         public override void CalculateTotalCost()

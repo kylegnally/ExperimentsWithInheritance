@@ -21,13 +21,13 @@ namespace cis237_assignment3
 
         public override string ToString()
         {
-            return base.ToString() 
-                   + " " 
-                   + " languages: " 
-                   + numberOfLanguages 
-                   + " " 
-                   + " PRICE:   " 
-                   + TotalCost.ToString("C");
+            return base.ToString()
+                   + " "
+                   + " languages: "
+                   + numberOfLanguages;
+            //+ " " 
+            //+ " PRICE:   " 
+            //+ TotalCost.ToString("C");
         }
 
         public override void CalculateTotalCost()

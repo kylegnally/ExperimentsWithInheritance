@@ -12,12 +12,12 @@ namespace cis237_assignment3
 
         private bool trashCompactor;
         private bool vacuum;
+        private const string NAME = "Janitor Droid";
        
         private const decimal TRASH_COST = 15.0m;
         private const decimal VAC_COST = 15.0m;
 
         public override decimal TotalCost { get; set; }
-        public string Name { get; }
 
         public JanitorDroid(
             string material,
@@ -33,6 +33,7 @@ namespace cis237_assignment3
                 computerConnection,
                 arm)
         {
+            Name = NAME;
             this.trashCompactor = trashCompactor;
             this.vacuum = vacuum;
         }
@@ -44,10 +45,10 @@ namespace cis237_assignment3
                    + " compactor: "
                    + trashCompactor
                    + " vacuum: "
-                   + vacuum
-                   + " " 
-                   + " PRICE:   " 
-                   + TotalCost.ToString("C");
+                   + vacuum;
+            //+ " " 
+            //+ " PRICE:   " 
+            //+ TotalCost.ToString("C");
         }
 
         public override void CalculateTotalCost()

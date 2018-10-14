@@ -16,6 +16,7 @@
         private string Color { get; }
         protected decimal BaseCost { get; set; }
         public abstract decimal TotalCost { get; set; }
+        public string Name { get; set; }
 
         // constructor
         protected Droid(string material, string color)
@@ -37,16 +38,10 @@
             if (this.Color == "White") BaseCost += COLOR_WHITE_COST;
         }
 
-        // Returns the color and material strings
-        public virtual string DroidInformation()
-        {
-            return Color + " " + Material + " ";
-        }
-
         // returns the basic droid information
         public override string ToString()
         {
-            return DroidInformation();
+            return TotalCost.ToString("C") + " " + Color + " " + Material + " " + Name + " ";
         }
 
         // abstract method to return total cost. Implemented in child classes

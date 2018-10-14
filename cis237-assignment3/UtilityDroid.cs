@@ -39,17 +39,17 @@ namespace cis237_assignment3
 
         public override string ToString()
         {
-            return base.ToString() 
-                   + " " 
-                   + " toolbox: " 
-                   + toolBox 
-                   + " comp cnxn: " 
-                   + computerConnection 
-                   + " arm: " 
-                   + arm 
+            return base.ToString()
                    + " "
-                   + " PRICE:   "
-                   + TotalCost.ToString("C");
+                   + " toolbox: "
+                   + toolBox
+                   + " comp cnxn: "
+                   + computerConnection
+                   + " arm: "
+                   + arm;
+            //+ " "
+            //+ " PRICE:   "
+            //+ TotalCost.ToString("C");
         }
 
         private void CalculateSubtotal()
