@@ -10,7 +10,6 @@ namespace cis237_assignment3
     {
         string menuString;
 
-        protected string Droid { get; set; }
 
         /// <summary>
         /// Displays the program menu.
@@ -91,6 +90,37 @@ namespace cis237_assignment3
             Console.ForegroundColor = ConsoleColor.Green;
             string droidAdded = "\n\n\t\t\t\tNew droid added.";
             return droidAdded;
+        }
+
+        public string DroidSelection()
+        {
+            Console.ResetColor();
+            menuString = "\n\n\n\n\n\t\t\t\t--- SELECT A DROID TYPE ---\n\n" +
+                         "\t\t\t\t(P) Protocol Droid \n\n" +
+                         "\t\t\t\t(U) Utility Droid\n" +
+                         "\t\t\t\t(J) Janitor Droid\n" +
+                         "\t\t\t\t(A) Astromech Droid\n\n";
+            return menuString;
+        }
+
+        public string[] AddAProtocolDroid()
+        {
+            return new string[] { "Polyskin", "Black", "3" };
+        }
+
+        public string[] AddAUtilityDroid()
+        {
+            return new string[] { "Ceraskin", "Red", "true", "true", "false" };
+        }
+
+        public string[] AddAJanitorDroid()
+        {
+            return new string[] { "Polyskin", "Black", "true", "false", "false", "true", "false" };
+        }
+
+        public string[] AddAnAstromechDroid()
+        {
+            return new string[] { "Polyskin", "White", "true", "false", "false", "true", "3" };
         }
 
         /// <summary>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,13 +11,16 @@ namespace cis237_assignment3
     {
         static void Main(string[] args)
         {
+            
             string menuChoice = null;
+            string droidTypeChoice = null;
+
             string outputString = "";
             UserInterface aMenu = new UserInterface();
             DroidCollection collection = new DroidCollection();
-            DisplayMenu();
+            DisplayMainMenu();
 
-            void DisplayMenu()
+            void DisplayMainMenu()
             {
                 Console.Clear();
                 Console.Write(aMenu.MainMenu());
@@ -32,7 +36,6 @@ namespace cis237_assignment3
                 {
 
                     case "P":
-                        // Print the list. Burp if the list isn't loaded yet.
                         aMenu.PrintListMessage();
                         if (collection == null)
                         {
@@ -43,19 +46,23 @@ namespace cis237_assignment3
                         {
                             string[] allDroids = collection.PrintTheDroidsInventory();
                             aMenu.PrintDroidList(allDroids);
+                            aMenu.Pause();
                         }
                         aMenu.Pause();
-                        DisplayMenu();
+                        DisplayMainMenu();
 
                         break;
 
                     case "A":
-                        // Add to the list. Burp if the list isn't loaded yet.
-                        //collection.Add(aMenu.Droid);
+                    {
+                        Console.Clear();
+                        DroidSelection(aMenu, collection, droidTypeChoice);
+                    }
                         aMenu.Pause();
-                        DisplayMenu();
+                        DisplayMainMenu();
                         break;
-                    // Quit the program. Quits regardless of whether the list is loaded. Never burps.
+
+                    // Quit the program. Never burp.
                     case "Q":
                         Console.WriteLine(aMenu.QuitProgramMessage());
                         aMenu.Pause();
@@ -67,20 +74,10 @@ namespace cis237_assignment3
                     default:
                         aMenu.InvalidOptionMessage();
                         aMenu.Pause();
-                        DisplayMenu();
+                        DisplayMainMenu();
                         break;
                 }
             }
-
-
-            //IDroid[] droids = new IDroid[10];
-            //droids[0] = new ProtocolDroid("Polyskin", "Black", 3); // 90
-            ////droids[1] = new ProtocolDroid("Metaskin", "Black", 2); // 85
-            ////droids[2] = new ProtocolDroid("Ceraskin", "White", 1); // 135
-            ////droids[3] = new ProtocolDroid("Polyskin", "Red", 4); // 125
-            ////droids[4] = new UtilityDroid("Ceraskin", "Red", true, true, false); // 135
-            ////droids[5] = new JanitorDroid("Polyskin", "Black", true, false, false, true, false); // 75
-            ////droids[6] = new AstromechDroid("Polyskin", "White", true, false, false, true, 3);
 
             //foreach (Droid droid in droids)
             //{
@@ -98,6 +95,38 @@ namespace cis237_assignment3
             //Use the UI class to print out the string
             //aMenu.Output(outputString);
             //System.Threading.Thread.Sleep(5000);
+        }
+
+        static void DroidSelection(UserInterface aMenu, DroidCollection collection, string droidType)
+        {
+            Console.Write(aMenu.DroidSelection());
+            droidType = Console.ReadLine().ToUpper();
+            switch (droidType)
+            {
+                case "P":
+                    string[] protocol = aMenu.AddAProtocolDroid();
+                    collection.Add(protocol[0], protocol[1], int.Parse(protocol[2]));
+                    Console.WriteLine(aMenu.DroidAdded());
+                    break;
+                case "U":
+                    string[] utility = aMenu.AddAUtilityDroid();
+                    collection.Add(utility[0], utility[1], bool.Parse(utility[2]), bool.Parse(utility[3]), bool.Parse(utility[4]));
+                    Console.WriteLine(aMenu.DroidAdded());
+                    break;
+                case "J":
+                    string[] janitor = aMenu.AddAJanitorDroid();
+                    collection.Add(janitor[0], janitor[1], bool.Parse(janitor[2]), bool.Parse(janitor[3]), bool.Parse(janitor[4]), bool.Parse(janitor[5]), bool.Parse(janitor[6]));
+                    Console.WriteLine(aMenu.DroidAdded());
+                    break;
+                case "A":
+                    string[] astromech = aMenu.AddAnAstromechDroid();
+                    collection.Add(astromech[0], astromech[1], bool.Parse(astromech[2]), bool.Parse(astromech[3]), bool.Parse(astromech[4]), bool.Parse(astromech[5]), int.Parse(astromech[6]));
+                    Console.WriteLine(aMenu.DroidAdded());
+                    break;
+                default:
+                    Console.WriteLine(aMenu.InvalidOptionMessage());
+                    break;
+            }
         }
     }
 }
