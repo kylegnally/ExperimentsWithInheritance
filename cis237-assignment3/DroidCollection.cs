@@ -13,7 +13,7 @@ namespace cis237_assignment3
 
         public DroidCollection()
         {
-            droids = new Droid[100];
+            droids = new Droid[4];
             collectionPosition = 0;
         }
 
@@ -96,7 +96,7 @@ namespace cis237_assignment3
             {
                 if (droids[i] != null)
                 {
-                    allDroids[i] = droids[i].ToString() + Environment.NewLine;
+                    allDroids[i] = droids[i].ToString();
                 }
             }
 

@@ -4,7 +4,6 @@ namespace cis237_assignment3
 {
     public class ProtocolDroid : Droid
     {
-        private const string NAME = "Protocol Droid";
 
         private int numberOfLanguages;
 
@@ -24,8 +23,6 @@ namespace cis237_assignment3
         {
             return base.ToString() 
                    + " " 
-                   + NAME 
-                   + " "                    
                    + " languages: " 
                    + numberOfLanguages 
                    + " " 

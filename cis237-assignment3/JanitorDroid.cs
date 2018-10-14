@@ -9,7 +9,6 @@ namespace cis237_assignment3
 {
     class JanitorDroid : UtilityDroid
     {
-        private const string NAME = "Janitor Droid";
 
         private bool trashCompactor;
         private bool vacuum;
@@ -18,6 +17,7 @@ namespace cis237_assignment3
         private const decimal VAC_COST = 15.0m;
 
         public override decimal TotalCost { get; set; }
+        public string Name { get; }
 
         public JanitorDroid(
             string material,
@@ -39,9 +39,7 @@ namespace cis237_assignment3
 
         public override string ToString()
         {
-            return base.ToString() 
-                   + " "
-                   + NAME
+            return base.ToString()
                    + " "
                    + " compactor: "
                    + trashCompactor

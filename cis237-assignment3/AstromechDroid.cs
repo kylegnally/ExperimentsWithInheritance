@@ -8,7 +8,6 @@ namespace cis237_assignment3
 {
     class AstromechDroid : UtilityDroid
     {
-        private const string NAME = "Astromech Droid";
 
         private bool fireExtinguisher;
         private int numberOfShips;
@@ -17,6 +16,8 @@ namespace cis237_assignment3
         private const decimal SHIPS_COST = 50.0m;
 
         public override decimal TotalCost { get; set; }
+        public string Name { get; }
+
 
         public AstromechDroid(
             string material,
@@ -38,9 +39,8 @@ namespace cis237_assignment3
 
         public override string ToString()
         {
-            return base.ToString() 
-                   + " "
-                   + NAME
+            DroidInformation();
+            return base.ToString()
                    + " "
                    + " extinguisher: "
                    + fireExtinguisher
