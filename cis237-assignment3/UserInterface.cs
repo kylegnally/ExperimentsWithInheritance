@@ -27,7 +27,19 @@ namespace cis237_assignment3
                 "\t\t\t\t(Q) Quit\n\n";
             return menuString;
         }
-        
+
+
+        public string DroidSelection()
+        {
+            Console.ResetColor();
+            Console.Write("\n\n\n\n\n\t\t\t\t--- SELECT A DROID TYPE ---\n\n" +
+                          "\t\t\t\t(P) Protocol Droid \n" +
+                          "\t\t\t\t(U) Utility Droid\n" +
+                          "\t\t\t\t(J) Janitor Droid\n" +
+                          "\t\t\t\t(A) Astromech Droid\n\n");
+            return menuString;
+        }
+
         /// <summary>
         /// Message displayed when the user prints the beverage list.
         /// </summary>
@@ -93,60 +105,10 @@ namespace cis237_assignment3
             return droidAdded;
         }
 
-        public string DroidSelection()
-        {
-            Console.ResetColor();
-            Console.Write("\n\n\n\n\n\t\t\t\t--- SELECT A DROID TYPE ---\n\n" +
-                          "\t\t\t\t(P) Protocol Droid \n" +
-                          "\t\t\t\t(U) Utility Droid\n" +
-                          "\t\t\t\t(J) Janitor Droid\n" +
-                          "\t\t\t\t(A) Astromech Droid\n\n");
-            return menuString;
-        }
-
-            //string droidType = Console.ReadLine().ToUpper();
-            //switch (droidType)
-            //{
-            //    case "P":
-            //        BuildProtocolDroid();
-            //        break;
-            //        //string[] protocol = aMenu.AddAProtocolDroid();
-            //    //    collection.Add(material, color, languages);
-            //    //    Console.WriteLine(aMenu.DroidAdded());
-            //    //    break;
-            //    //case "U":
-            //    //    string[] utility = aMenu.AddAUtilityDroid();
-            //    //    collection.Add(utility[0], utility[1], bool.Parse(utility[2]), bool.Parse(utility[3]), bool.Parse(utility[4]));
-            //    //    Console.WriteLine(aMenu.DroidAdded());
-            //    //    break;
-            //    //case "J":
-            //    //    string[] janitor = aMenu.AddAJanitorDroid();
-            //    //    collection.Add(janitor[0], janitor[1], bool.Parse(janitor[2]), bool.Parse(janitor[3]), bool.Parse(janitor[4]), bool.Parse(janitor[5]), bool.Parse(janitor[6]));
-            //    //    Console.WriteLine(aMenu.DroidAdded());
-            //    //    break;
-            //    //case "A":
-            //    //    string[] astromech = aMenu.AddAnAstromechDroid();
-            //    //    collection.Add(astromech[0], astromech[1], bool.Parse(astromech[2]), bool.Parse(astromech[3]), bool.Parse(astromech[4]), bool.Parse(astromech[5]), int.Parse(astromech[6]));
-            //    //    Console.WriteLine(aMenu.DroidAdded());
-            //    //    break;
-            //    default:
-            //        Console.WriteLine(InvalidOptionMessage());
-            //        break;
-            //}
-        //}
-
         public string[] BuildProtocolDroid()
         {
-            Console.Clear();
-            Console.Write(MaterialSelection());
-            Console.Write("\n\n\t\t\t\t");
-            string materialMenuOption = Console.ReadLine().ToUpper();
-            string material = DetermineMaterial(materialMenuOption);
-            Console.Clear();
-            Console.Write(ColorSelection());
-            Console.Write("\n\n\t\t\t\t");
-            string colorMenuOption = Console.ReadLine().ToUpper();
-            string color = DetermineColor(colorMenuOption);
+            string material = GeneralMaterial();
+            string color = GeneralColor();
             Console.Write("\n\n\t\t\t\t");
             Console.Write("How many languages would you like to support? ");
             string languages = Console.ReadLine();
@@ -156,9 +118,42 @@ namespace cis237_assignment3
                 Console.WriteLine("That is not an integer. Please enter a number.");
                 languages = Console.ReadLine();
             }
-            return new string[] {material, color, languages};
+            return new[] {material, color, languages};
         }
 
+        public string[] BuildUtilityDroid()
+        {
+            string material = GeneralMaterial();
+            string color = GeneralColor();
+            Console.Write("\n\n\t\t\t\t");
+            Console.Write("Would you like to add a toolbox to this model (Y/N)? ");
+            string toolboxChoice = Console.ReadLine();
+            
+            // continue adding switch elements
+        }
+
+        private string GeneralMaterial()
+        {
+            Console.Clear();
+            Console.Write(MaterialSelection());
+            Console.Write("\n\n\t\t\t\t");
+            string materialMenuOption = Console.ReadLine().ToUpper();
+            string material = DetermineMaterial(materialMenuOption);
+            return material;
+        }
+
+        private string GeneralColor()
+        {
+            Console.Clear();
+            Console.Write(ColorSelection());
+            Console.Write("\n\n\t\t\t\t");
+            string colorMenuOption = Console.ReadLine().ToUpper();
+            string color = DetermineColor(colorMenuOption);
+            return color;
+        }
+
+        
+        
         private string DetermineMaterial(string material)
         {
             switch (material)
@@ -203,29 +198,6 @@ namespace cis237_assignment3
             }
 
             return color;
-        }
-
-        //private string GetLanguages()
-        //{
-            
-        //    else
-        //    {
-        //        Console.WriteLine("Please enter an integer.");
-        //        GetLanguages();
-        //    }
-        //}
-
-        private bool ValidateNumber(string number)
-        {
-            bool isANumber = false;
-            int number1;
-            if (int.TryParse(number, out number1)) return true;
-            return false;
-        }
-
-        private void EnterANumberIdiot()
-        {
-            Console.WriteLine("Please enter an integer.");
         }
 
         public string MaterialSelection()
