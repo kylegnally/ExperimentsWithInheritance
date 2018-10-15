@@ -31,7 +31,7 @@ namespace cis237_assignment3
             this.toolBox = toolBox;
             this.computerConnection = computerConnection;
             this.arm = arm;
-            this.Name = Name;
+            this.Name = NAME;
             CalculateSubtotal();
         }
 

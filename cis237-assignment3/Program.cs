@@ -36,7 +36,7 @@ namespace cis237_assignment3
                 {
 
                     case "P":
-                        aMenu.PrintListMessage();
+                        Console.Write(aMenu.PrintListMessage());
                         if (collection == null)
                         {
                             Console.Write(aMenu.NothingToPrint());
@@ -83,7 +83,18 @@ namespace cis237_assignment3
                 {
                     case "P":
                         string[] protocol = aMenu.BuildProtocolDroid();
-                        collection.Add(protocol[0], protocol[1], int.Parse(protocol[2]));
+                        int languages;
+                        if (int.TryParse(protocol[2], out languages))
+                            collection.Add(protocol[0], protocol[1], int.Parse(protocol[2]));
+                        else
+                        {
+                            Console.Write(aMenu.NotANumberMessage());
+                            aMenu.Pause();
+                            aMenu.Pause();
+                            aMenu.Pause();
+                            Console.ResetColor();
+                            protocol = aMenu.BuildProtocolDroid();
+                        }
                         Console.WriteLine(aMenu.DroidAdded());
                         break;
                     case "U":
@@ -98,7 +109,18 @@ namespace cis237_assignment3
                         break;
                     case "A":
                         string[] astromech = aMenu.BuildAnAstromechDroid();
-                        collection.Add(astromech[0], astromech[1], bool.Parse(astromech[2]), bool.Parse(astromech[3]), bool.Parse(astromech[4]), bool.Parse(astromech[5]), int.Parse(astromech[6]));
+                        int ships;
+                        if (int.TryParse(astromech[6], out ships))
+                            collection.Add(astromech[0], astromech[1], bool.Parse(astromech[2]), bool.Parse(astromech[3]), bool.Parse(astromech[4]), bool.Parse(astromech[5]), int.Parse(astromech[6]));
+                        else
+                        {
+                            Console.Write(aMenu.NotANumberMessage());
+                            aMenu.Pause();
+                            aMenu.Pause();
+                            aMenu.Pause();
+                            Console.ResetColor();
+                            astromech = aMenu.BuildAnAstromechDroid();
+                        }
                         Console.WriteLine(aMenu.DroidAdded());
                         break;
                     default:

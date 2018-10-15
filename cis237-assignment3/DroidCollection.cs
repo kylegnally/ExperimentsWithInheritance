@@ -96,7 +96,7 @@ namespace cis237_assignment3
             {
                 if (droids[i] != null)
                 {
-                    allDroids[i] = droids[i].ToString();
+                    allDroids[i] = droids[i].ToString() + "\n";
                 }
             }
 

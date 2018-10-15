@@ -17,8 +17,6 @@ namespace cis237_assignment3
         private const decimal SHIPS_COST = 50.0m;
 
         public override decimal TotalCost { get; set; }
-        public string Name { get; }
-
 
         public AstromechDroid(
             string material,
@@ -34,9 +32,9 @@ namespace cis237_assignment3
             computerConnection,
             arm)
         {
+            this.Name = NAME;
             this.fireExtinguisher = fireExtinguisher;
             this.numberOfShips = numberOfShips;
-            this.Name = NAME;
         }
 
         public override string ToString()

@@ -28,7 +28,6 @@ namespace cis237_assignment3
             return menuString;
         }
 
-
         public string DroidSelection()
         {
             Console.ResetColor();
@@ -71,7 +70,7 @@ namespace cis237_assignment3
         public string PrintListMessage()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            string printListMessage = "\n\n\t\t\t\tY--- DROID INVENTORY ---";
+            string printListMessage = "\n\n\t\t\t\t--- DROID INVENTORY ---\n\n";
             return printListMessage;
         }
 
@@ -130,6 +129,8 @@ namespace cis237_assignment3
         {
             Console.ForegroundColor = ConsoleColor.Red;
             string invalidOption = "\n\n\t\t\t\tThat doesn't seem to be an integer. Please enter a number (1, 5, 3, etc.).";
+            invalidOption += "\n\n\t\t\t\tDROID NOT ADDED. Please Re-enter this droids information, making certain";
+            invalidOption += "\n\t\t\t\tthat you enter a number for the number of languages desired.";
             return invalidOption;
         }
 
@@ -200,31 +201,14 @@ namespace cis237_assignment3
 
         private string ChooseDroidLanguages()
         {
+            int number;
             Console.ResetColor();
             Console.Write("\n\n\t\t\t\t");
             Console.Write("How many languages would you like to support? ");
             string languages = Console.ReadLine();
-            //int number;
-            if (!ValidNumber(languages)) ChooseDroidLanguages();
-            else return languages;
-            
             return languages;
         }
-
-        private bool ValidNumber(string languages)
-        {
-            int number;
-            while (!int.TryParse(languages, out number))
-            {
-                Console.WriteLine(NotANumberMessage());
-                Pause();
-                Console.Write(ColorSelection());
-                return false;
-            }
-
-            return true;
-        }
-
+        
         private string ChooseDroidMaterial()
         {
             Console.Clear();
