@@ -268,10 +268,7 @@ namespace cis237_assignment3
                     arm = "false";
                     break;
                 default:
-                    Console.Write(InvalidOptionMessage());
-                    Pause();
-                    ChooseArmOption();
-                    break;
+                    return arm;
             }
 
             return arm;
@@ -291,10 +288,7 @@ namespace cis237_assignment3
                     compcnxn = "false";
                     break;
                 default:
-                    Console.Write(InvalidOptionMessage());
-                    Pause();
-                    ChooseComputerConnectionOption();
-                    break;
+                    return compcnxn;
             }
 
             return compcnxn;
@@ -314,9 +308,7 @@ namespace cis237_assignment3
                     vacuumChoice = "false";
                     break;
                 default:
-                    Console.Write(InvalidOptionMessage());
-                    Pause();
-                    BuildAUtilityDroid();
+                    vacuumChoice = "invalid";
                     break;
             }
 
@@ -332,9 +324,7 @@ namespace cis237_assignment3
                     compactorChoice = "false";
                     break;
                 default:
-                    Console.Write(InvalidOptionMessage());
-                    Pause();
-                    BuildAUtilityDroid();
+                    vacuumChoice = "invalid";
                     break;
             }
 
@@ -355,22 +345,14 @@ namespace cis237_assignment3
                     extinguisherChoice = "false";
                     break;
                 default:
-                    Console.Write(InvalidOptionMessage());
-                    Pause();
-                    BuildAUtilityDroid();
+                    extinguisherChoice = "invalid";
                     break;
             }
 
             Console.Write("\n\n\t\t\t\t");
             Console.Write("How many ships would you like to support? ");
             string ships = Console.ReadLine();
-            int number;
-            while (!int.TryParse(ships, out number))
-            {
-                Console.WriteLine(NotANumberMessage());
-                ships = Console.ReadLine();
-            }
-
+            
             return new[] {extinguisherChoice, ships};
         }
 
@@ -390,9 +372,7 @@ namespace cis237_assignment3
                     material = "Ceraskin";
                     break;
                 default:
-                    Console.Write(InvalidOptionMessage());
-                    Pause();
-                    ChooseDroidMaterial();
+                    material = "invalid";
                     break;
             }
 
@@ -415,9 +395,7 @@ namespace cis237_assignment3
                     color = "White";
                     break;
                 default:
-                    Console.Write(InvalidOptionMessage());
-                    Pause();
-                    ChooseDroidColor();
+                    color = "invalid";
                     break;
             }
 
@@ -425,6 +403,26 @@ namespace cis237_assignment3
         }
 
 #endregion
+
+        public bool ValidateProtocolDroidEntries(string[] protocol)
+        {
+            return true;
+        }
+
+        public bool ValidateUtilityDroidEntries(string[] utility)
+        {
+            return true;
+        }
+
+        public bool ValidateJanitorDroidEntries(string[] janitor)
+        {
+            return true;
+        }
+
+        public bool ValidateAstromechDroidEntries(string[] astromech)
+        {
+            return true;
+        }
         
     }
 }
