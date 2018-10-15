@@ -125,6 +125,10 @@ namespace cis237_assignment3
             return invalidOption;
         }
 
+        /// <summary>
+        /// Message displayed when the user enters a non-numerical value where one is expected.
+        /// </summary>
+        /// <returns>string</returns>
         public string NotANumberMessage()
         {
             Console.ForegroundColor = ConsoleColor.Red;
