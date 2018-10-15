@@ -42,6 +42,7 @@ namespace cis237_assignment3
 
         public string MaterialSelection()
         {
+            Console.ResetColor();
             menuString = "\n\n\n\n\n\t\t\t\t--- SELECT A MATERIAL TYPE ---\n\n" +
                          "\t\t\t\t(P) Polyskin \n" +
                          "\t\t\t\t(M) Metaskin\n" +
@@ -51,6 +52,8 @@ namespace cis237_assignment3
 
         public string ColorSelection()
         {
+            Console.Clear();
+            Console.ResetColor();
             menuString = "\n\n\n\n\n\t\t\t\t--- SELECT A COLOR ---\n\n" +
                          "\t\t\t\t(B) Black \n" +
                          "\t\t\t\t(R) Red\n" +
@@ -197,6 +200,7 @@ namespace cis237_assignment3
 
         private string ChooseDroidLanguages()
         {
+            Console.ResetColor();
             Console.Write("\n\n\t\t\t\t");
             Console.Write("How many languages would you like to support? ");
             string languages = Console.ReadLine();
@@ -204,7 +208,9 @@ namespace cis237_assignment3
             while (!int.TryParse(languages, out number))
             {
                 Console.WriteLine(NotANumberMessage());
-                languages = Console.ReadLine();
+                Pause();
+                Console.Write(ColorSelection());
+                //ChooseDroidLanguages();
             }
 
             return languages;
@@ -215,8 +221,7 @@ namespace cis237_assignment3
             Console.Clear();
             Console.Write(MaterialSelection());
             Console.Write("\n\n\t\t\t\t");
-            string materialMenuOption = Console.ReadLine().ToUpper();
-            string material = DetermineMaterial(materialMenuOption);
+            string material = DetermineMaterial();
             return material;
         }
 
@@ -225,8 +230,7 @@ namespace cis237_assignment3
             Console.Clear();
             Console.Write(ColorSelection());
             Console.Write("\n\n\t\t\t\t");
-            string colorMenuOption = Console.ReadLine().ToUpper();
-            string color = DetermineColor(colorMenuOption);
+            string color = DetermineColor();
             return color;
         }
 
@@ -373,8 +377,10 @@ namespace cis237_assignment3
             return new[] {extinguisherChoice, ships};
         }
 
-        private string DetermineMaterial(string material)
+        private string DetermineMaterial()
         {
+            Console.ResetColor();
+            string material = Console.ReadLine().ToUpper();
             switch (material)
             {
                 case "P":
@@ -389,16 +395,17 @@ namespace cis237_assignment3
                 default:
                     Console.Write(InvalidOptionMessage());
                     Pause();
-                    DetermineMaterial(material);
+                    ChooseDroidMaterial();
                     break;
             }
 
             return material;
         }
 
-        private string DetermineColor(string color)
+        private string DetermineColor()
         {
-            color = color.ToUpper();
+            Console.ResetColor();
+            string color = Console.ReadLine().ToUpper();
             switch (color)
             {
                 case "B":
@@ -413,7 +420,7 @@ namespace cis237_assignment3
                 default:
                     Console.Write(InvalidOptionMessage());
                     Pause();
-                    DetermineMaterial(color);
+                    ChooseDroidColor();
                     break;
             }
 

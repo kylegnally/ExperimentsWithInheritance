@@ -55,38 +55,7 @@ namespace cis237_assignment3
                         break;
 
                     case "A":
-                        Console.Clear();
-                        aMenu.DroidSelection();
-                        Console.Write("\n\n\t\t\t\t");
-                        string droidType = Console.ReadLine().ToUpper();
-                        switch (droidType)
-                        {
-                            case "P":
-                                string[] protocol = aMenu.BuildProtocolDroid();
-                                collection.Add(protocol[0], protocol[1], int.Parse(protocol[2]));
-                                Console.WriteLine(aMenu.DroidAdded());
-                                break;
-                            case "U":
-                                string[] utility = aMenu.BuildAUtilityDroid();
-                                collection.Add(utility[0], utility[1], bool.Parse(utility[2]), bool.Parse(utility[3]), bool.Parse(utility[4]));
-                                Console.WriteLine(aMenu.DroidAdded());
-                                break;
-                            case "J":
-                                string[] janitor = aMenu.BuildAJanitorDroid();
-                                collection.Add(janitor[0], janitor[1], bool.Parse(janitor[2]), bool.Parse(janitor[3]), bool.Parse(janitor[4]), bool.Parse(janitor[5]), bool.Parse(janitor[6]));
-                                Console.WriteLine(aMenu.DroidAdded());
-                                break;
-                            case "A":
-                                string[] astromech = aMenu.BuildAnAstromechDroid();
-                                collection.Add(astromech[0], astromech[1], bool.Parse(astromech[2]), bool.Parse(astromech[3]), bool.Parse(astromech[4]), bool.Parse(astromech[5]), int.Parse(astromech[6]));
-                                Console.WriteLine(aMenu.DroidAdded());
-                                break;
-                            default:
-                                Console.WriteLine(aMenu.InvalidOptionMessage());
-                                break;
-                        }
-                        aMenu.Pause();
-                        DisplayMainMenu();
+                        ChooseDroidType();
                         break;
 
                     case "Q":
@@ -96,11 +65,50 @@ namespace cis237_assignment3
                         break;
 
                     default:
-                        aMenu.InvalidOptionMessage();
+                        Console.WriteLine(aMenu.InvalidOptionMessage());
                         aMenu.Pause();
                         DisplayMainMenu();
                         break;
                 }
+            }
+
+            void ChooseDroidType()
+            {
+                Console.Clear();
+                Console.ResetColor();
+                aMenu.DroidSelection();
+                Console.Write("\n\n\t\t\t\t");
+                string droidType = Console.ReadLine().ToUpper();
+                switch (droidType)
+                {
+                    case "P":
+                        string[] protocol = aMenu.BuildProtocolDroid();
+                        collection.Add(protocol[0], protocol[1], int.Parse(protocol[2]));
+                        Console.WriteLine(aMenu.DroidAdded());
+                        break;
+                    case "U":
+                        string[] utility = aMenu.BuildAUtilityDroid();
+                        collection.Add(utility[0], utility[1], bool.Parse(utility[2]), bool.Parse(utility[3]), bool.Parse(utility[4]));
+                        Console.WriteLine(aMenu.DroidAdded());
+                        break;
+                    case "J":
+                        string[] janitor = aMenu.BuildAJanitorDroid();
+                        collection.Add(janitor[0], janitor[1], bool.Parse(janitor[2]), bool.Parse(janitor[3]), bool.Parse(janitor[4]), bool.Parse(janitor[5]), bool.Parse(janitor[6]));
+                        Console.WriteLine(aMenu.DroidAdded());
+                        break;
+                    case "A":
+                        string[] astromech = aMenu.BuildAnAstromechDroid();
+                        collection.Add(astromech[0], astromech[1], bool.Parse(astromech[2]), bool.Parse(astromech[3]), bool.Parse(astromech[4]), bool.Parse(astromech[5]), int.Parse(astromech[6]));
+                        Console.WriteLine(aMenu.DroidAdded());
+                        break;
+                    default:
+                        Console.WriteLine(aMenu.InvalidOptionMessage());
+                        aMenu.Pause();
+                        ChooseDroidType();
+                        break;
+                }
+                aMenu.Pause();
+                DisplayMainMenu();
             }
         }
     }
