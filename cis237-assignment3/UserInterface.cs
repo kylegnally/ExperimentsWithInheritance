@@ -404,7 +404,7 @@ namespace cis237_assignment3
                 case "B":
                     color = "Black";
                     break;
-                case "M":
+                case "R":
                     color = "Red";
                     break;
                 case "W":
