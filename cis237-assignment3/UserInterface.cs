@@ -331,6 +331,7 @@ namespace cis237_assignment3
 
         private string DetermineColor(string color)
         {
+            color = color.ToUpper();
             switch (color)
             {
                 case "B":
