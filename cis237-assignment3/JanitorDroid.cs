@@ -33,7 +33,7 @@ namespace cis237_assignment3
                 computerConnection,
                 arm)
         {
-            Name = NAME;
+            this.Name = NAME;
             this.trashCompactor = trashCompactor;
             this.vacuum = vacuum;
         }

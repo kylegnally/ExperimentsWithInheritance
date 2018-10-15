@@ -11,7 +11,7 @@ namespace cis237_assignment3
     {
         string menuString;
 
-
+#region Menus
         /// <summary>
         /// Displays the program menu.
         /// Returns the menu as a string.
@@ -58,6 +58,9 @@ namespace cis237_assignment3
             return menuString;
         }
 
+        #endregion
+
+#region Utility Methods
         /// <summary>
         /// Message displayed when the user prints the beverage list.
         /// </summary>
@@ -80,6 +83,23 @@ namespace cis237_assignment3
                 }
             }
         }
+
+        /// <summary>
+        /// Pauses execution by putting the currently running thread to sleep for 1500ms.
+        /// </summary>
+        public void Pause()
+        {
+            System.Threading.Thread.Sleep(1500);
+        }
+
+        public void Output(string outputString)
+        {
+            Console.WriteLine(outputString);
+        }
+
+#endregion
+
+#region output messages
 
         /// <summary>
         /// Message displayed when the user exits the program.
@@ -132,6 +152,10 @@ namespace cis237_assignment3
             return droidAdded;
         }
 
+        #endregion
+
+#region Droid Build Methods
+
         public string[] BuildProtocolDroid()
         {
             string material = ChooseDroidMaterial();
@@ -154,11 +178,22 @@ namespace cis237_assignment3
         public string[] BuildAJanitorDroid()
         {
             string[] janitorDroidBasics = BuildAUtilityDroid();
-            string[] janitorDroidSpecifics = BuildAJanitorDroid();
+            string[] janitorDroidSpecifics = ChooseJanitorDroidSpecifics();
             string[] janitorDroid = janitorDroidBasics.Concat(janitorDroidSpecifics).ToArray();
             return janitorDroid;
         }
 
+        public string[] BuildAnAstromechDroid()
+        {
+            string[] astromechDroidBasics = BuildAUtilityDroid();
+            string[] astromechSpecifics = ChooseAstromechDroidSpecifics();
+            string[] astromechDroid = astromechDroidBasics.Concat(astromechSpecifics).ToArray();
+            return astromechDroid;
+        }
+
+        #endregion
+
+#region Droid Options Methods
 
         private string ChooseDroidLanguages()
         {
@@ -305,6 +340,38 @@ namespace cis237_assignment3
             return new[] {vacuumChoice, compactorChoice};
         }
 
+        private string[] ChooseAstromechDroidSpecifics()
+        {
+            Console.Write("\n\n\t\t\t\t");
+            Console.Write("Would you like to add a fire extinguisher to this model (Y/N)? ");
+            string extinguisherChoice = Console.ReadLine().ToUpper();
+            switch (extinguisherChoice)
+            {
+                case "Y":
+                    extinguisherChoice = "true";
+                    break;
+                case "N":
+                    extinguisherChoice = "false";
+                    break;
+                default:
+                    Console.Write(InvalidOptionMessage());
+                    Pause();
+                    BuildAUtilityDroid();
+                    break;
+            }
+
+            Console.Write("\n\n\t\t\t\t");
+            Console.Write("How many ships would you like to support? ");
+            string ships = Console.ReadLine();
+            int number;
+            while (!int.TryParse(ships, out number))
+            {
+                Console.WriteLine(NotANumberMessage());
+                ships = Console.ReadLine();
+            }
+
+            return new[] {extinguisherChoice, ships};
+        }
 
         private string DetermineMaterial(string material)
         {
@@ -340,7 +407,7 @@ namespace cis237_assignment3
                 case "M":
                     color = "Red";
                     break;
-                case "C":
+                case "W":
                     color = "White";
                     break;
                 default:
@@ -353,44 +420,8 @@ namespace cis237_assignment3
             return color;
         }
 
-        public string[] AddAProtocolDroid()
-        {
-            string material;
-            string color;
-            string lang;
-
-
-            return new string[] { "Polyskin", "Black", "3" };
-        }
-
-        public string[] AddAUtilityDroid()
-        {
-            return new string[] { "Ceraskin", "Red", "true", "true", "false" };
-        }
-
-        public string[] AddAJanitorDroid()
-        {
-            return new string[] { "Polyskin", "Black", "false", "false", "true", "true", "false" };
-        }
-
-        public string[] AddAnAstromechDroid()
-        {
-            return new string[] { "Polyskin", "White", "true", "true", "false", "false", "3" };
-        }
-
-        /// <summary>
-        /// Pauses execution by putting the currently running thread to sleep for 1500ms.
-        /// </summary>
-        public void Pause()
-        {
-            System.Threading.Thread.Sleep(1500);
-        }
-
-        public void Output(string outputString)
-        {
-            Console.WriteLine(outputString);
-        }
-
+#endregion
+        
     }
 }
 

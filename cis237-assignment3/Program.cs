@@ -76,11 +76,11 @@ namespace cis237_assignment3
                                 collection.Add(janitor[0], janitor[1], bool.Parse(janitor[2]), bool.Parse(janitor[3]), bool.Parse(janitor[4]), bool.Parse(janitor[5]), bool.Parse(janitor[6]));
                                 Console.WriteLine(aMenu.DroidAdded());
                                 break;
-                            //case "A":
-                            //    string[] astromech = aMenu.AddAnAstromechDroid();
-                            //    collection.Add(astromech[0], astromech[1], bool.Parse(astromech[2]), bool.Parse(astromech[3]), bool.Parse(astromech[4]), bool.Parse(astromech[5]), int.Parse(astromech[6]));
-                            //    Console.WriteLine(aMenu.DroidAdded());
-                            //    break;
+                            case "A":
+                                string[] astromech = aMenu.BuildAnAstromechDroid();
+                                collection.Add(astromech[0], astromech[1], bool.Parse(astromech[2]), bool.Parse(astromech[3]), bool.Parse(astromech[4]), bool.Parse(astromech[5]), int.Parse(astromech[6]));
+                                Console.WriteLine(aMenu.DroidAdded());
+                                break;
                             default:
                                 Console.WriteLine(aMenu.InvalidOptionMessage());
                                 break;

@@ -36,6 +36,7 @@ namespace cis237_assignment3
         {
             this.fireExtinguisher = fireExtinguisher;
             this.numberOfShips = numberOfShips;
+            this.Name = NAME;
         }
 
         public override string ToString()

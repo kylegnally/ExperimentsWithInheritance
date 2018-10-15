@@ -2,12 +2,13 @@
 
 namespace cis237_assignment3
 {
-    public class ProtocolDroid : Droid
+    class ProtocolDroid : Droid
     {
 
         private int numberOfLanguages;
 
         private const decimal COST_PER_LANGUAGE = 15.00m;
+        private const string NAME = "Prtocol Droid";
 
         public override decimal TotalCost { get; set; }
 
@@ -17,6 +18,7 @@ namespace cis237_assignment3
             int numberOfLanguages) : base (material, color)
         {
             this.numberOfLanguages = numberOfLanguages;
+            this.Name = NAME;
         }
 
         public override string ToString()

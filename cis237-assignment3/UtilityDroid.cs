@@ -16,6 +16,8 @@ namespace cis237_assignment3
         private const decimal TOOLBOX_COST = 15.0m;
         private const decimal COMPUTER_CONNECTION_COST = 20.0m;
         private const decimal ARM_COST = 10.0m;
+        private const string NAME = "Utility Droid";
+
 
         public override decimal TotalCost { get; set; }
 
@@ -29,6 +31,7 @@ namespace cis237_assignment3
             this.toolBox = toolBox;
             this.computerConnection = computerConnection;
             this.arm = arm;
+            this.Name = Name;
             CalculateSubtotal();
         }
 
