@@ -204,16 +204,25 @@ namespace cis237_assignment3
             Console.Write("\n\n\t\t\t\t");
             Console.Write("How many languages would you like to support? ");
             string languages = Console.ReadLine();
+            //int number;
+            if (!ValidNumber(languages)) ChooseDroidLanguages();
+            else return languages;
+            
+            return languages;
+        }
+
+        private bool ValidNumber(string languages)
+        {
             int number;
             while (!int.TryParse(languages, out number))
             {
                 Console.WriteLine(NotANumberMessage());
                 Pause();
                 Console.Write(ColorSelection());
-                //ChooseDroidLanguages();
+                return false;
             }
 
-            return languages;
+            return true;
         }
 
         private string ChooseDroidMaterial()
