@@ -40,18 +40,38 @@ namespace cis237_assignment3
             return menuString;
         }
 
+        public string MaterialSelection()
+        {
+            menuString = "\n\n\n\n\n\t\t\t\t--- SELECT A MATERIAL TYPE ---\n\n" +
+                         "\t\t\t\t(P) Polyskin \n" +
+                         "\t\t\t\t(M) Metaskin\n" +
+                         "\t\t\t\t(C) Ceraskin\n";
+            return menuString;
+        }
+
+        public string ColorSelection()
+        {
+            menuString = "\n\n\n\n\n\t\t\t\t--- SELECT A COLOR ---\n\n" +
+                         "\t\t\t\t(B) Black \n" +
+                         "\t\t\t\t(R) Red\n" +
+                         "\t\t\t\t(W) White\n";
+            return menuString;
+        }
+
         /// <summary>
         /// Message displayed when the user prints the beverage list.
         /// </summary>
         /// <returns>string</returns>
         public string PrintListMessage()
         {
-            string printListMessage = "\n\n\t\t\t\tYou chose to (P)rint the droid list.";
+            Console.ForegroundColor = ConsoleColor.Green;
+            string printListMessage = "\n\n\t\t\t\tY--- DROID INVENTORY ---";
             return printListMessage;
         }
 
         public void PrintDroidList(string[] allDroids)
         {
+            Console.ResetColor();
             for (int i = 0; i < allDroids.Length; i++)
             {
                 if (allDroids[i] != null)
@@ -83,6 +103,13 @@ namespace cis237_assignment3
             return invalidOption;
         }
 
+        public string NotANumberMessage()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            string invalidOption = "\n\n\t\t\t\tThat doesn't seem to be an integer. Please enter a number (1, 5, 3, etc.).";
+            return invalidOption;
+        }
+
         /// <summary>
         /// Called if the user tries to print a list while the list is empty. Contains a suggestion to load the list. Returns a string.
         /// </summary>
@@ -107,32 +134,48 @@ namespace cis237_assignment3
 
         public string[] BuildProtocolDroid()
         {
-            string material = GeneralMaterial();
-            string color = GeneralColor();
+            string material = ChooseDroidMaterial();
+            string color = ChooseDroidColor();
+            string languages = ChooseDroidLanguages();
+            return new[] {material, color, languages};
+        }
+
+        public string[] BuildAUtilityDroid()
+        {
+            string material = ChooseDroidMaterial();
+            string color = ChooseDroidColor();
+            string toolbox = ChooseToolboxOption();
+            string compcnxn = ChooseComputerConnectionOption();
+            string arm = ChooseArmOption();
+
+            return new[] { material, color, toolbox, compcnxn, arm };
+        }
+
+        public string[] BuildAJanitorDroid()
+        {
+            string[] janitorDroidBasics = BuildAUtilityDroid();
+            string[] janitorDroidSpecifics = BuildAJanitorDroid();
+            string[] janitorDroid = janitorDroidBasics.Concat(janitorDroidSpecifics).ToArray();
+            return janitorDroid;
+        }
+
+
+        private string ChooseDroidLanguages()
+        {
             Console.Write("\n\n\t\t\t\t");
             Console.Write("How many languages would you like to support? ");
             string languages = Console.ReadLine();
             int number;
             while (!int.TryParse(languages, out number))
             {
-                Console.WriteLine("That is not an integer. Please enter a number.");
+                Console.WriteLine(NotANumberMessage());
                 languages = Console.ReadLine();
             }
-            return new[] {material, color, languages};
+
+            return languages;
         }
 
-        public string[] BuildUtilityDroid()
-        {
-            string material = GeneralMaterial();
-            string color = GeneralColor();
-            Console.Write("\n\n\t\t\t\t");
-            Console.Write("Would you like to add a toolbox to this model (Y/N)? ");
-            string toolboxChoice = Console.ReadLine();
-            
-            // continue adding switch elements
-        }
-
-        private string GeneralMaterial()
+        private string ChooseDroidMaterial()
         {
             Console.Clear();
             Console.Write(MaterialSelection());
@@ -142,7 +185,7 @@ namespace cis237_assignment3
             return material;
         }
 
-        private string GeneralColor()
+        private string ChooseDroidColor()
         {
             Console.Clear();
             Console.Write(ColorSelection());
@@ -152,8 +195,117 @@ namespace cis237_assignment3
             return color;
         }
 
-        
-        
+        private string ChooseToolboxOption()
+        {
+            Console.Write("\n\n\t\t\t\t");
+            Console.Write("Would you like to add a toolbox to this model (Y/N)? ");
+            string toolboxChoice = Console.ReadLine().ToUpper();
+            switch (toolboxChoice)
+            {
+                case "Y":
+                    toolboxChoice = "true";
+                    break;
+                case "N":
+                    toolboxChoice = "false";
+                    break;
+                default:
+                    Console.Write(InvalidOptionMessage());
+                    Pause();
+                    BuildAUtilityDroid();
+                    break;
+            }
+
+            return toolboxChoice;
+        }
+
+        private string ChooseArmOption()
+        {
+            Console.Write("\n\n\t\t\t\t");
+            Console.Write("Would you like to add a utility arm to this model (Y/N)? ");
+            string arm = Console.ReadLine().ToUpper();
+            switch (arm)
+            {
+                case "Y":
+                    arm = "true";
+                    break;
+                case "N":
+                    arm = "false";
+                    break;
+                default:
+                    Console.Write(InvalidOptionMessage());
+                    Pause();
+                    ChooseArmOption();
+                    break;
+            }
+
+            return arm;
+        }
+
+        private string ChooseComputerConnectionOption()
+        {
+            Console.Write("\n\n\t\t\t\t");
+            Console.Write("Would you like to add a computer connection to this model (Y/N)? ");
+            string compcnxn = Console.ReadLine().ToUpper();
+            switch (compcnxn)
+            {
+                case "Y":
+                    compcnxn = "true";
+                    break;
+                case "N":
+                    compcnxn = "false";
+                    break;
+                default:
+                    Console.Write(InvalidOptionMessage());
+                    Pause();
+                    ChooseComputerConnectionOption();
+                    break;
+            }
+
+            return compcnxn;
+        }
+
+        private string[] ChooseJanitorDroidSpecifics()
+        {
+            Console.Write("\n\n\t\t\t\t");
+            Console.Write("Would you like to add a vacuum to this model (Y/N)? ");
+            string vacuumChoice = Console.ReadLine().ToUpper();
+            switch (vacuumChoice)
+            {
+                case "Y":
+                    vacuumChoice = "true";
+                    break;
+                case "N":
+                    vacuumChoice = "false";
+                    break;
+                default:
+                    Console.Write(InvalidOptionMessage());
+                    Pause();
+                    BuildAUtilityDroid();
+                    break;
+            }
+
+            Console.Write("\n\n\t\t\t\t");
+            Console.Write("Would you like to add a trash compactor to this model (Y/N)? ");
+            string compactorChoice = Console.ReadLine().ToUpper();
+            switch (compactorChoice)
+            {
+                case "Y":
+                    compactorChoice = "true";
+                    break;
+                case "N":
+                    compactorChoice = "false";
+                    break;
+                default:
+                    Console.Write(InvalidOptionMessage());
+                    Pause();
+                    BuildAUtilityDroid();
+                    break;
+            }
+
+            return new[] {vacuumChoice, compactorChoice};
+        }
+
+
         private string DetermineMaterial(string material)
         {
             switch (material)
@@ -198,24 +350,6 @@ namespace cis237_assignment3
             }
 
             return color;
-        }
-
-        public string MaterialSelection()
-        {
-            menuString = "\n\n\n\n\n\t\t\t\t--- SELECT A MATERIAL TYPE ---\n\n" +
-                         "\t\t\t\t(P) Polyskin \n" +
-                         "\t\t\t\t(M) Metaskin\n" +
-                         "\t\t\t\t(C) Ceraskin\n";
-            return menuString;
-        }
-
-        public string ColorSelection()
-        {
-            menuString = "\n\n\n\n\n\t\t\t\t--- SELECT A COLOR ---\n\n" +
-                         "\t\t\t\t(B) Black \n" +
-                         "\t\t\t\t(R) Red\n" +
-                         "\t\t\t\t(W) White\n";
-            return menuString;
         }
 
         public string[] AddAProtocolDroid()
