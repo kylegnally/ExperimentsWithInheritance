@@ -92,22 +92,6 @@ namespace cis237_assignment3
         }
 
         /// <summary>
-        /// Writes the entire droid inventory line by line to the console.
-        /// </summary>
-        /// <param name="allDroids"></param>
-        public void PrintDroidList(string[] allDroids)
-        {
-            Console.ResetColor();
-            for (int i = 0; i < allDroids.Length; i++)
-            {
-                if (allDroids[i] != null)
-                {
-                    Console.WriteLine(allDroids[i]);
-                }
-            }
-        }
-
-        /// <summary>
         /// Pauses execution by putting the currently running thread to sleep for 1500ms.
         /// </summary>
         public void Pause()
@@ -139,18 +123,6 @@ namespace cis237_assignment3
             Console.ForegroundColor = ConsoleColor.Red;
             string invalidOption = "\n\n\t\t\t\t\tInvalid option. Please select a valid option from the menu.";
             return invalidOption;
-        }
-
-        /// <summary>
-        /// Called if the user tries to print a list while the list is empty.
-        /// Contains a suggestion to load the list. Returns a string.
-        /// </summary>
-        /// <returns>string</returns>
-        public string NothingToPrint()
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            string printError = "\n\t\t\t\t\tThe list is empty. There are no droids to list.";
-            return printError;
         }
 
         /// <summary>

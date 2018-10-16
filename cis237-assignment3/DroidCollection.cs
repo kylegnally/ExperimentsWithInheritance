@@ -162,7 +162,7 @@ namespace cis237_assignment3
             {
                 if (droids[i] != null)
                 {
-                    Console.WriteLine(allDroids[i] = droids[i].ToString() + "\n");
+                    Console.WriteLine(allDroids[i] = droids[i].ToString());
                 }
 
                 else if (droids[0] == null)
