@@ -16,8 +16,8 @@ namespace cis237_assignment3
         private const decimal METASKIN_MAT_COST = 25.0m;
         private const decimal CERASKIN_MAT_COST = 50.0m;
         private const decimal COLOR_BLACK_COST = 10.0m;
-        private const decimal COLOR_RED_COST = 10.0m;
-        private const decimal COLOR_WHITE_COST = 10.0m;
+        private const decimal COLOR_RED_COST = 15.0m;
+        private const decimal COLOR_WHITE_COST = 20.0m;
 
         // properties shared by all droids
         private string Material { get; }
@@ -26,7 +26,14 @@ namespace cis237_assignment3
         public abstract decimal TotalCost { get; set; }
         public string Name { get; set; }
 
-        // constructor
+        /// <summary>
+        /// Constructor used as a base by all child classes. Requires
+        /// parameters for basic droid material and droid color. Also
+        /// calls a CalculateSubTotal method which stores the combined prices
+        /// associated with those parameters in BaseCost protected property.
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="color"></param>
         protected Droid(string material, string color)
         {
             BaseCost = UNIT_BASE_COST;
@@ -46,13 +53,18 @@ namespace cis237_assignment3
             if (this.Color == "White") BaseCost += COLOR_WHITE_COST;
         }
 
-        // returns the basic droid information
+        /// <summary>
+        /// returns the basic droid information when called from any child class.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return TotalCost.ToString("C") + " " + Color + " " + Material + " " + Name + " ";
         }
 
-        // abstract method to return total cost. Implemented in child classes
+        /// <summary>
+        /// abstract method to return total cost. Implemented in child classes.
+        /// </summary>
         public abstract void CalculateTotalCost();
     }
 }

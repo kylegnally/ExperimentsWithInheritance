@@ -32,7 +32,7 @@ namespace cis237_assignment3
             {
                 Console.Clear();
                 Console.Write(aMenu.MainMenu());
-                Console.Write("\n\n\t\t\t\t");
+                Console.Write("\n\n\t\t\t\t\t");
                 menuChoice = Console.ReadLine();
                 HandleMainMenuInput(menuChoice);
             }
@@ -43,7 +43,7 @@ namespace cis237_assignment3
                 Console.Clear();
                 Console.ResetColor();
                 Console.Write(aMenu.DroidSelection());
-                Console.Write("\n\n\t\t\t\t");
+                Console.Write("\n\n\t\t\t\t\t");
                 string droidType = Console.ReadLine().ToUpper();
                 HandleDroidMenuInput(droidType);
             }

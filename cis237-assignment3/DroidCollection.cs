@@ -10,27 +10,62 @@ namespace cis237_assignment3
 {
     class DroidCollection
     {
+        // variables used by the collection
         Droid[] droids;
         int collectionPosition;
 
+        /// <summary>
+        /// DroidCollection constructor. Creates a new array of type Droid
+        /// and sets the collectionPosition to 0.  
+        /// </summary>
         public DroidCollection()
         {
             droids = new Droid[100];
             collectionPosition = 0;
         }
 
+/******************************************************************************
+ *
+ *  Overloaded Add methods. These add the four droid types to the collection.
+ *  Adding a droid advances the collectionposition variable so we can add a
+ *  droid to the next array slot.
+ *
+ *  All four of these are functionally identical and only have different signatures,
+ *  so only the first is commented.
+ *
+ ******************************************************************************/
+
+        /// <summary>
+        /// ProtocolDroid Add method
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="color"></param>
+        /// <param name="numberOfLanguages"></param>
         public void Add(string material, 
             string color, 
             int numberOfLanguages)
         {
+            // create a new Droid of the type indicated by the method signature
             droids[collectionPosition] = new ProtocolDroid(
                 material, 
                 color, 
                 numberOfLanguages);
+
+            // invoke the total cost calculation method for this specific droid type
             droids[collectionPosition].CalculateTotalCost();
+
+            // advance to the next position
             collectionPosition++;
         }
 
+        /// <summary>
+        /// UtilityDroid Add method
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="color"></param>
+        /// <param name="toolBox"></param>
+        /// <param name="computerConnection"></param>
+        /// <param name="arm"></param>
         public void Add(
             string material,
             string color,
@@ -48,6 +83,16 @@ namespace cis237_assignment3
             collectionPosition++;
         }
 
+        /// <summary>
+        /// JanitorDroid Add method
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="color"></param>
+        /// <param name="toolBox"></param>
+        /// <param name="computerConnection"></param>
+        /// <param name="arm"></param>
+        /// <param name="trashCompactor"></param>
+        /// <param name="vacuum"></param>
         public void Add(
             string material,
             string color,
@@ -69,6 +114,16 @@ namespace cis237_assignment3
             collectionPosition++;
         }
 
+        /// <summary>
+        /// AstromechDroid Add method
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="color"></param>
+        /// <param name="toolBox"></param>
+        /// <param name="computerConnection"></param>
+        /// <param name="arm"></param>
+        /// <param name="fireExtinguisher"></param>
+        /// <param name="numberOfShips"></param>
         public void Add(
             string material,
             string color,
@@ -90,6 +145,11 @@ namespace cis237_assignment3
             collectionPosition++;
         }
 
+        /// <summary>
+        /// Method to loop through the collection and pass it
+        /// into a simple string array for display.
+        /// </summary>
+        /// <returns>string[]</returns>
         public string[] PrintTheDroidsInventory()
         {
             string[] allDroids = new string[collectionPosition];

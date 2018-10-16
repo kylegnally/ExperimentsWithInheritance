@@ -4,7 +4,7 @@
 
 ## Author
 
-
+Kyle Nally
 
 ## Description
 
@@ -131,6 +131,8 @@ It may be beneficial for you to create extra methods within the droid sub classe
 
 ## Outside Resources Used
 
-
+None.
 
 ## Known Problems, Issues, And/Or Errors in the Program
+
+None.
