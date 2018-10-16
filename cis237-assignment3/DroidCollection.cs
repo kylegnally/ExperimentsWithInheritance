@@ -6,6 +6,9 @@
  *
  ***************************************************************************/
 
+using System;
+using System.Runtime.ConstrainedExecution;
+
 namespace cis237_assignment3
 {
     class DroidCollection
@@ -152,13 +155,21 @@ namespace cis237_assignment3
         /// <returns>string[]</returns>
         public string[] PrintTheDroidsInventory()
         {
+            Console.ResetColor();
             string[] allDroids = new string[collectionPosition];
 
             for (int i = 0; i < droids.Length; i++)
             {
                 if (droids[i] != null)
                 {
-                    allDroids[i] = droids[i].ToString() + "\n";
+                    Console.WriteLine(allDroids[i] = droids[i].ToString() + "\n");
+                }
+
+                else if (droids[0] == null)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("\t\t\t\t\tNO DROIDS IN INVENTORY");
+                    Console.ResetColor();
                 }
             }
 

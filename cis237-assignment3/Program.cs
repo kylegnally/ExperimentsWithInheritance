@@ -57,18 +57,8 @@ namespace cis237_assignment3
 
                     case "P":
                         Console.Write(aMenu.PrintListMessage());
-                        if (collection == null)
-                        {
-                            Console.Write(aMenu.NothingToPrint());
-                            aMenu.Pause();
-                        }
-                        else
-                        {
-                            string[] allDroids = collection.PrintTheDroidsInventory();
-                            aMenu.PrintDroidList(allDroids);
-                            aMenu.Pause();
-                            
-                        }
+                        string[] allDroids = collection.PrintTheDroidsInventory();
+                        //aMenu.PrintDroidList(allDroids);
                         aMenu.Pause();
                         DisplayMainMenu();
                         break;
@@ -147,6 +137,10 @@ namespace cis237_assignment3
                         break;
                     case "M":
                         DisplayMainMenu();
+                        break;
+                    default:
+                        Console.WriteLine(aMenu.InvalidOptionMessage());
+                        aMenu.Pause();
                         break;
                 }
                 aMenu.Pause();

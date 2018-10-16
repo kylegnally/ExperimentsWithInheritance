@@ -32,7 +32,7 @@ namespace cis237_assignment3
         }
 
         /// <summary>
-        /// Dusplays the droid selection menu.
+        /// Displays the droid selection menu.
         /// </summary>
         /// <returns>string</returns>
         public string DroidSelection()
@@ -81,7 +81,7 @@ namespace cis237_assignment3
 
 #region Utility Methods
         /// <summary>
-        /// Message displayed when the user prints the beverage list.
+        /// Message displayed when the user prints the droid list.
         /// </summary>
         /// <returns>string</returns>
         public string PrintListMessage()
@@ -142,7 +142,8 @@ namespace cis237_assignment3
         }
 
         /// <summary>
-        /// Called if the user tries to print a list while the list is empty. Contains a suggestion to load the list. Returns a string.
+        /// Called if the user tries to print a list while the list is empty.
+        /// Contains a suggestion to load the list. Returns a string.
         /// </summary>
         /// <returns>string</returns>
         public string NothingToPrint()
