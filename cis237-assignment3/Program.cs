@@ -76,61 +76,88 @@ namespace cis237_assignment3
             {
                 Console.Clear();
                 Console.ResetColor();
-                aMenu.DroidSelection();
+                Console.Write(aMenu.DroidSelection());
                 Console.Write("\n\n\t\t\t\t");
                 string droidType = Console.ReadLine().ToUpper();
                 switch (droidType)
                 {
                     case "P":
                         string[] protocol = aMenu.BuildProtocolDroid();
-                        int languages;
-                        if (int.TryParse(protocol[2], out languages))
+                        if (aMenu.ValidateDroidEntries(protocol))
+                        {
                             collection.Add(protocol[0], protocol[1], int.Parse(protocol[2]));
+                            Console.WriteLine(aMenu.DroidAdded());
+                        }
                         else
                         {
-                            Console.Write(aMenu.NotANumberMessage());
-                            aMenu.Pause();
-                            aMenu.Pause();
-                            aMenu.Pause();
-                            Console.ResetColor();
-                            protocol = aMenu.BuildProtocolDroid();
+                            InvalidInformation();
                         }
-                        Console.WriteLine(aMenu.DroidAdded());
                         break;
                     case "U":
                         string[] utility = aMenu.BuildAUtilityDroid();
-                        collection.Add(utility[0], utility[1], bool.Parse(utility[2]), bool.Parse(utility[3]), bool.Parse(utility[4]));
-                        Console.WriteLine(aMenu.DroidAdded());
+                        if (aMenu.ValidateDroidEntries(utility))
+                        {
+                            collection.Add(utility[0], utility[1], bool.Parse(utility[2]), bool.Parse(utility[3]), bool.Parse(utility[4]));
+                            Console.WriteLine(aMenu.DroidAdded());
+                        }
+                        else
+                        {
+                            InvalidInformation();
+                        }
+                        //string[] utility = aMenu.BuildAUtilityDroid();
+                        //collection.Add(utility[0], utility[1], bool.Parse(utility[2]), bool.Parse(utility[3]), bool.Parse(utility[4]));
+                        //Console.WriteLine(aMenu.DroidAdded());
                         break;
                     case "J":
                         string[] janitor = aMenu.BuildAJanitorDroid();
-                        collection.Add(janitor[0], janitor[1], bool.Parse(janitor[2]), bool.Parse(janitor[3]), bool.Parse(janitor[4]), bool.Parse(janitor[5]), bool.Parse(janitor[6]));
-                        Console.WriteLine(aMenu.DroidAdded());
+                        if (aMenu.ValidateDroidEntries(janitor))
+                        {
+                            collection.Add(janitor[0], janitor[1], bool.Parse(janitor[2]), bool.Parse(janitor[3]), bool.Parse(janitor[4]), bool.Parse(janitor[5]), bool.Parse(janitor[6]));
+                            Console.WriteLine(aMenu.DroidAdded());
+                        }
+                        else
+                        {
+                            InvalidInformation();
+                        }
+                        //collection.Add(janitor[0], janitor[1], bool.Parse(janitor[2]), bool.Parse(janitor[3]), bool.Parse(janitor[4]), bool.Parse(janitor[5]), bool.Parse(janitor[6]));
+                        //Console.WriteLine(aMenu.DroidAdded());
                         break;
                     case "A":
                         string[] astromech = aMenu.BuildAnAstromechDroid();
-                        int ships;
-                        if (int.TryParse(astromech[6], out ships))
+                        if (aMenu.ValidateDroidEntries(astromech))
+                        {
                             collection.Add(astromech[0], astromech[1], bool.Parse(astromech[2]), bool.Parse(astromech[3]), bool.Parse(astromech[4]), bool.Parse(astromech[5]), int.Parse(astromech[6]));
+                            Console.WriteLine(aMenu.DroidAdded());
+                        }
                         else
                         {
-                            Console.Write(aMenu.NotANumberMessage());
-                            aMenu.Pause();
-                            aMenu.Pause();
-                            aMenu.Pause();
-                            Console.ResetColor();
-                            astromech = aMenu.BuildAnAstromechDroid();
+                            InvalidInformation();
                         }
-                        Console.WriteLine(aMenu.DroidAdded());
-                        break;
-                    default:
-                        Console.WriteLine(aMenu.InvalidOptionMessage());
-                        aMenu.Pause();
-                        ChooseDroidType();
+                        //int ships;
+                        //if (int.TryParse(astromech[6], out ships))
+                        //    collection.Add(astromech[0], astromech[1], bool.Parse(astromech[2]), bool.Parse(astromech[3]), bool.Parse(astromech[4]), bool.Parse(astromech[5]), int.Parse(astromech[6]));
+                        //else
+                        //{
+                        //    Console.Write(aMenu.NotANumberMessage());
+                        //    aMenu.Pause();
+                        //    aMenu.Pause();
+                        //    aMenu.Pause();
+                        //    Console.ResetColor();
+                        //    astromech = aMenu.BuildAnAstromechDroid();
+                        //}
+                        //Console.WriteLine(aMenu.DroidAdded());
                         break;
                 }
                 aMenu.Pause();
                 DisplayMainMenu();
+            }
+
+            void InvalidInformation()
+            {
+                Console.Write(aMenu.InvalidInformation());
+                aMenu.Pause();
+                aMenu.Pause();
+                Console.ResetColor();
             }
         }
     }

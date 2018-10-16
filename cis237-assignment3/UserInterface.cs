@@ -31,11 +31,12 @@ namespace cis237_assignment3
         public string DroidSelection()
         {
             Console.ResetColor();
-            Console.Write("\n\n\n\n\n\t\t\t\t--- SELECT A DROID TYPE ---\n\n" +
+            menuString = ("\n\n\n\n\n\t\t\t\t--- SELECT A DROID TYPE ---\n\n" +
                           "\t\t\t\t(P) Protocol Droid \n" +
                           "\t\t\t\t(U) Utility Droid\n" +
                           "\t\t\t\t(J) Janitor Droid\n" +
-                          "\t\t\t\t(A) Astromech Droid\n\n");
+                          "\t\t\t\t(A) Astromech Droid\n" +
+                          "\t\t\t\t(M) Main Menu\n\n");
             return menuString;
         }
 
@@ -160,6 +161,19 @@ namespace cis237_assignment3
             return droidAdded;
         }
 
+        /// <summary>
+        /// Called when the user has entered some incorrect information when entering a droid's options.
+        /// </summary>
+        /// <returns>string</returns>
+        public string InvalidInformation()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            string invalidOption = "\n\n\t\t\t\tIt seems you've entered some incorrect information.";
+            invalidOption += "\n\n\t\t\t\tDROID NOT ADDED.";
+            invalidOption += "\n\t\t\t\tPlease Re-enter this droid's information.";
+            return invalidOption;
+        }
+
         #endregion
 
 #region Droid Build Methods
@@ -245,9 +259,10 @@ namespace cis237_assignment3
                     toolboxChoice = "false";
                     break;
                 default:
-                    Console.Write(InvalidOptionMessage());
-                    Pause();
-                    BuildAUtilityDroid();
+                    toolboxChoice = "invalid";
+                    //Console.Write(InvalidOptionMessage());
+                    //Pause();
+                    //BuildAUtilityDroid();
                     break;
             }
 
@@ -268,7 +283,8 @@ namespace cis237_assignment3
                     arm = "false";
                     break;
                 default:
-                    return arm;
+                    arm = "invalid";
+                    break;
             }
 
             return arm;
@@ -288,7 +304,8 @@ namespace cis237_assignment3
                     compcnxn = "false";
                     break;
                 default:
-                    return compcnxn;
+                    compcnxn = "invalid";
+                    break;
             }
 
             return compcnxn;
@@ -328,7 +345,7 @@ namespace cis237_assignment3
                     break;
             }
 
-            return new[] {vacuumChoice, compactorChoice};
+            return new[] {compactorChoice, vacuumChoice};
         }
 
         private string[] ChooseAstromechDroidSpecifics()
@@ -402,28 +419,22 @@ namespace cis237_assignment3
             return color;
         }
 
-#endregion
+        #endregion
 
-        public bool ValidateProtocolDroidEntries(string[] protocol)
-        {
-            return true;
-        }
+#region Validation
 
-        public bool ValidateUtilityDroidEntries(string[] utility)
+        public bool ValidateDroidEntries(string[] droid)
         {
-            return true;
-        }
-
-        public bool ValidateJanitorDroidEntries(string[] janitor)
-        {
-            return true;
-        }
-
-        public bool ValidateAstromechDroidEntries(string[] astromech)
-        {
+            int number;
+            for (int i = 0; i < droid.Length - 1; i++)
+            {
+                if (droid[i] == "invalid" || (!int.TryParse(droid[i], out number))) return false;
+            }
             return true;
         }
         
+#endregion
+
     }
 }
 
