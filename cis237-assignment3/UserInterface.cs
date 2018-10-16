@@ -219,11 +219,12 @@ namespace cis237_assignment3
 
         private string ChooseDroidLanguages()
         {
-            int number;
             Console.ResetColor();
             Console.Write("\n\n\t\t\t\t");
             Console.Write("How many languages would you like to support? ");
             string languages = Console.ReadLine();
+            int number;
+            if (!int.TryParse(languages, out number)) languages = "invalid";
             return languages;
         }
         
@@ -260,9 +261,6 @@ namespace cis237_assignment3
                     break;
                 default:
                     toolboxChoice = "invalid";
-                    //Console.Write(InvalidOptionMessage());
-                    //Pause();
-                    //BuildAUtilityDroid();
                     break;
             }
 
@@ -369,6 +367,8 @@ namespace cis237_assignment3
             Console.Write("\n\n\t\t\t\t");
             Console.Write("How many ships would you like to support? ");
             string ships = Console.ReadLine();
+            int number;
+            if (!int.TryParse(ships, out number)) ships = "invalid";
             
             return new[] {extinguisherChoice, ships};
         }
@@ -426,9 +426,9 @@ namespace cis237_assignment3
         public bool ValidateDroidEntries(string[] droid)
         {
             int number;
-            for (int i = 0; i < droid.Length - 1; i++)
+            for (int i = 0; i < droid.Length; i++)
             {
-                if (droid[i] == "invalid" || (!int.TryParse(droid[i], out number))) return false;
+                if (droid[i] == "invalid") return false;
             }
             return true;
         }

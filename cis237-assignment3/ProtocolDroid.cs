@@ -8,7 +8,7 @@ namespace cis237_assignment3
         private int numberOfLanguages;
 
         private const decimal COST_PER_LANGUAGE = 15.00m;
-        private const string NAME = "Prtocol Droid";
+        private const string NAME = "Protocol Droid";
 
         public override decimal TotalCost { get; set; }
 
