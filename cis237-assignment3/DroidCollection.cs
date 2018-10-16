@@ -1,8 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/***************************************************************************
+ *
+ * Kyle Nally
+ * CIS237 T/Th 3:30pm Assignment 3 - Inheritance and Polymorphism
+ * 10/16/18
+ *
+ ***************************************************************************/
 
 namespace cis237_assignment3
 {

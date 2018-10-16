@@ -1,9 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/***************************************************************************
+ *
+ * Kyle Nally
+ * CIS237 T/Th 3:30pm Assignment 3 - Inheritance and Polymorphism
+ * 10/16/18
+ *
+ ***************************************************************************/
+
+using System;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace cis237_assignment3
 {
@@ -13,8 +17,7 @@ namespace cis237_assignment3
 
 #region Menus
         /// <summary>
-        /// Displays the program menu.
-        /// Returns the menu as a string.
+        /// Displays the program main menu.
         /// </summary>
         /// <returns>string</returns>
         public string MainMenu()
@@ -28,6 +31,10 @@ namespace cis237_assignment3
             return menuString;
         }
 
+        /// <summary>
+        /// Dusplays the droid selection menu.
+        /// </summary>
+        /// <returns>string</returns>
         public string DroidSelection()
         {
             Console.ResetColor();
@@ -35,11 +42,15 @@ namespace cis237_assignment3
                           "\t\t\t\t(P) Protocol Droid \n" +
                           "\t\t\t\t(U) Utility Droid\n" +
                           "\t\t\t\t(J) Janitor Droid\n" +
-                          "\t\t\t\t(A) Astromech Droid\n" +
+                          "\t\t\t\t(A) Astromech Droid\n\n" +
                           "\t\t\t\t(M) Main Menu\n\n");
             return menuString;
         }
 
+        /// <summary>
+        /// Displays the material selection menu.
+        /// </summary>
+        /// <returns>string</returns>
         public string MaterialSelection()
         {
             Console.ResetColor();
@@ -50,6 +61,10 @@ namespace cis237_assignment3
             return menuString;
         }
 
+        /// <summary>
+        /// Displays the color selection menu.
+        /// </summary>
+        /// <returns>string</returns>
         public string ColorSelection()
         {
             Console.Clear();
@@ -75,6 +90,10 @@ namespace cis237_assignment3
             return printListMessage;
         }
 
+        /// <summary>
+        /// Writes the entire droid inventory line by line to the console.
+        /// </summary>
+        /// <param name="allDroids"></param>
         public void PrintDroidList(string[] allDroids)
         {
             Console.ResetColor();
@@ -93,11 +112,6 @@ namespace cis237_assignment3
         public void Pause()
         {
             System.Threading.Thread.Sleep(1500);
-        }
-
-        public void Output(string outputString)
-        {
-            Console.WriteLine(outputString);
         }
 
 #endregion
@@ -123,19 +137,6 @@ namespace cis237_assignment3
         {
             Console.ForegroundColor = ConsoleColor.Red;
             string invalidOption = "\n\n\t\t\t\tInvalid option. Please select a valid option from the menu.";
-            return invalidOption;
-        }
-
-        /// <summary>
-        /// Message displayed when the user enters a non-numerical value where one is expected.
-        /// </summary>
-        /// <returns>string</returns>
-        public string NotANumberMessage()
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            string invalidOption = "\n\n\t\t\t\tThat doesn't seem to be an integer. Please enter a number (1, 5, 3, etc.).";
-            invalidOption += "\n\n\t\t\t\tDROID NOT ADDED. Please Re-enter this droids information, making certain";
-            invalidOption += "\n\t\t\t\tthat you enter a number for the number of languages desired.";
             return invalidOption;
         }
 
@@ -178,6 +179,10 @@ namespace cis237_assignment3
 
 #region Droid Build Methods
 
+        /// <summary>
+        /// Entry point for building a protocol droid.
+        /// </summary>
+        /// <returns>string[]</returns>
         public string[] BuildProtocolDroid()
         {
             string material = ChooseDroidMaterial();
@@ -186,6 +191,10 @@ namespace cis237_assignment3
             return new[] {material, color, languages};
         }
 
+        /// <summary>
+        /// Entry point for building a utility droid.
+        /// </summary>
+        /// <returns>string[]</returns>
         public string[] BuildAUtilityDroid()
         {
             string material = ChooseDroidMaterial();
@@ -197,6 +206,10 @@ namespace cis237_assignment3
             return new[] { material, color, toolbox, compcnxn, arm };
         }
 
+        /// <summary>
+        /// Entry point for building a janitor droid.
+        /// </summary>
+        /// <returns>string[]</returns>
         public string[] BuildAJanitorDroid()
         {
             string[] janitorDroidBasics = BuildAUtilityDroid();
@@ -205,6 +218,10 @@ namespace cis237_assignment3
             return janitorDroid;
         }
 
+        /// <summary>
+        /// Entry point for building an astromech droid.
+        /// </summary>
+        /// <returns>string[]</returns>
         public string[] BuildAnAstromechDroid()
         {
             string[] astromechDroidBasics = BuildAUtilityDroid();
@@ -217,6 +234,10 @@ namespace cis237_assignment3
 
 #region Droid Options Methods
 
+        /// <summary>
+        /// Allows the user to specify the number of supported languages for a droid.
+        /// </summary>
+        /// <returns>string</returns>
         private string ChooseDroidLanguages()
         {
             Console.ResetColor();
@@ -228,6 +249,10 @@ namespace cis237_assignment3
             return languages;
         }
         
+        /// <summary>
+        /// Allows the user to choose the material a droid is made of.
+        /// </summary>
+        /// <returns>string</returns>
         private string ChooseDroidMaterial()
         {
             Console.Clear();
@@ -237,6 +262,10 @@ namespace cis237_assignment3
             return material;
         }
 
+        /// <summary>
+        /// Allows a user to specify the color of a droid.
+        /// </summary>
+        /// <returns></returns>
         private string ChooseDroidColor()
         {
             Console.Clear();
@@ -246,6 +275,10 @@ namespace cis237_assignment3
             return color;
         }
 
+        /// <summary>
+        /// Allows a user to add a toolbox to a droid.
+        /// </summary>
+        /// <returns>string</returns>
         private string ChooseToolboxOption()
         {
             Console.Write("\n\n\t\t\t\t");
@@ -267,6 +300,10 @@ namespace cis237_assignment3
             return toolboxChoice;
         }
 
+        /// <summary>
+        /// Allows a user to add an arm to a droid.
+        /// </summary>
+        /// <returns>string</returns>
         private string ChooseArmOption()
         {
             Console.Write("\n\n\t\t\t\t");
@@ -288,6 +325,10 @@ namespace cis237_assignment3
             return arm;
         }
 
+        /// <summary>
+        /// Allows a user to add a computer connection to a droid.
+        /// </summary>
+        /// <returns>string</returns>
         private string ChooseComputerConnectionOption()
         {
             Console.Write("\n\n\t\t\t\t");
@@ -309,6 +350,10 @@ namespace cis237_assignment3
             return compcnxn;
         }
 
+        /// <summary>
+        /// Allows a user to choose options specific to a janitor droid.
+        /// </summary>
+        /// <returns>string[]</returns>
         private string[] ChooseJanitorDroidSpecifics()
         {
             Console.Write("\n\n\t\t\t\t");
@@ -346,6 +391,10 @@ namespace cis237_assignment3
             return new[] {compactorChoice, vacuumChoice};
         }
 
+        /// <summary>
+        /// Allows a user to choose options aspecific to an astromech droid.
+        /// </summary>
+        /// <returns>string[]</returns>
         private string[] ChooseAstromechDroidSpecifics()
         {
             Console.Write("\n\n\t\t\t\t");
@@ -373,6 +422,11 @@ namespace cis237_assignment3
             return new[] {extinguisherChoice, ships};
         }
 
+        /// <summary>
+        /// Method to determine which material is selected based on
+        /// a user's choice from the material menu.
+        /// </summary>
+        /// <returns>string</returns>
         private string DetermineMaterial()
         {
             Console.ResetColor();
@@ -396,6 +450,11 @@ namespace cis237_assignment3
             return material;
         }
 
+        /// <summary>
+        /// Method to determine which color is selected based on
+        /// their choice from the color menu.
+        /// </summary>
+        /// <returns>string</returns>
         private string DetermineColor()
         {
             Console.ResetColor();
@@ -423,9 +482,14 @@ namespace cis237_assignment3
 
 #region Validation
 
+        /// <summary>
+        /// Input validation method. Loops through a string array. Returns
+        /// false if "invalid" is found in the array.
+        /// </summary>
+        /// <param name="droid"></param>
+        /// <returns>bool</returns>
         public bool ValidateDroidEntries(string[] droid)
         {
-            int number;
             for (int i = 0; i < droid.Length; i++)
             {
                 if (droid[i] == "invalid") return false;

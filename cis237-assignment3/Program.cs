@@ -1,9 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
+﻿/***************************************************************************
+ *
+ * Kyle Nally
+ * CIS237 T/Th 3:30pm Assignment 3 - Inheritance and Polymorphism
+ * 10/16/18
+ *
+ ***************************************************************************/
+
+using System;
 
 namespace cis237_assignment3
 {
@@ -16,20 +19,37 @@ namespace cis237_assignment3
             string droidTypeChoice = null;
 
             string outputString = "";
+
+            // instantiate the user interface
             UserInterface aMenu = new UserInterface();
+
+            // instantiate the collection
             DroidCollection collection = new DroidCollection();
             DisplayMainMenu();
 
+            // Main menu
             void DisplayMainMenu()
             {
                 Console.Clear();
                 Console.Write(aMenu.MainMenu());
                 Console.Write("\n\n\t\t\t\t");
                 menuChoice = Console.ReadLine();
-                HandleInput(menuChoice);
+                HandleMainMenuInput(menuChoice);
             }
 
-            void HandleInput(string userSelection)
+            // droid menu
+            void DisplayDroidMenu()
+            {
+                Console.Clear();
+                Console.ResetColor();
+                Console.Write(aMenu.DroidSelection());
+                Console.Write("\n\n\t\t\t\t");
+                string droidType = Console.ReadLine().ToUpper();
+                HandleDroidMenuInput(droidType);
+            }
+
+            // main menu input handler
+            void HandleMainMenuInput(string userSelection)
             {
                 userSelection = userSelection.ToUpper();
                 switch (userSelection)
@@ -51,11 +71,10 @@ namespace cis237_assignment3
                         }
                         aMenu.Pause();
                         DisplayMainMenu();
-
                         break;
 
                     case "A":
-                        ChooseDroidType();
+                        DisplayDroidMenu();
                         break;
 
                     case "Q":
@@ -72,13 +91,9 @@ namespace cis237_assignment3
                 }
             }
 
-            void ChooseDroidType()
+            // droid menu input handler
+            void HandleDroidMenuInput(string droidType)
             {
-                Console.Clear();
-                Console.ResetColor();
-                Console.Write(aMenu.DroidSelection());
-                Console.Write("\n\n\t\t\t\t");
-                string droidType = Console.ReadLine().ToUpper();
                 switch (droidType)
                 {
                     case "P":
@@ -104,9 +119,6 @@ namespace cis237_assignment3
                         {
                             InvalidInformation();
                         }
-                        //string[] utility = aMenu.BuildAUtilityDroid();
-                        //collection.Add(utility[0], utility[1], bool.Parse(utility[2]), bool.Parse(utility[3]), bool.Parse(utility[4]));
-                        //Console.WriteLine(aMenu.DroidAdded());
                         break;
                     case "J":
                         string[] janitor = aMenu.BuildAJanitorDroid();
@@ -119,8 +131,6 @@ namespace cis237_assignment3
                         {
                             InvalidInformation();
                         }
-                        //collection.Add(janitor[0], janitor[1], bool.Parse(janitor[2]), bool.Parse(janitor[3]), bool.Parse(janitor[4]), bool.Parse(janitor[5]), bool.Parse(janitor[6]));
-                        //Console.WriteLine(aMenu.DroidAdded());
                         break;
                     case "A":
                         string[] astromech = aMenu.BuildAnAstromechDroid();
@@ -133,29 +143,20 @@ namespace cis237_assignment3
                         {
                             InvalidInformation();
                         }
-                        //int ships;
-                        //if (int.TryParse(astromech[6], out ships))
-                        //    collection.Add(astromech[0], astromech[1], bool.Parse(astromech[2]), bool.Parse(astromech[3]), bool.Parse(astromech[4]), bool.Parse(astromech[5]), int.Parse(astromech[6]));
-                        //else
-                        //{
-                        //    Console.Write(aMenu.NotANumberMessage());
-                        //    aMenu.Pause();
-                        //    aMenu.Pause();
-                        //    aMenu.Pause();
-                        //    Console.ResetColor();
-                        //    astromech = aMenu.BuildAnAstromechDroid();
-                        //}
-                        //Console.WriteLine(aMenu.DroidAdded());
+
+                        break;
+                    case "M":
+                        DisplayMainMenu();
                         break;
                 }
                 aMenu.Pause();
-                DisplayMainMenu();
+                DisplayDroidMenu();
             }
 
+            // The Badlands
             void InvalidInformation()
             {
                 Console.Write(aMenu.InvalidInformation());
-                aMenu.Pause();
                 aMenu.Pause();
                 Console.ResetColor();
             }
