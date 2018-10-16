@@ -39,7 +39,7 @@ namespace cis237_assignment3
         {
             Console.ResetColor();
             menuString = ("\n\n\n\n\n\t\t\t\t\t--- SELECT A DROID TYPE ---\n\n" +
-                          "\t\t\t\t\t--- ALL DROIDS BASE UNIT COST: $20 ---\n\n" +
+                          "\t\t\t\t\t--- BASE UNIT COST (ALL DROIDS): $20 ---\n\n" +
                           "\t\t\t\t\t(P) Protocol Droid \n" +
                           "\t\t\t\t\t(U) Utility Droid\n" +
                           "\t\t\t\t\t(J) Janitor Droid\n" +
@@ -56,9 +56,9 @@ namespace cis237_assignment3
         {
             Console.ResetColor();
             menuString = "\n\n\n\n\n\t\t\t\t\t--- SELECT A MATERIAL TYPE ---\n\n" +
-                         "\t\t\t\t\t(P) Polyskin \n" +
-                         "\t\t\t\t\t(M) Metaskin\n" +
-                         "\t\t\t\t\t(C) Ceraskin\n";
+                         "\t\t\t\t\t(P) Polyskin ($15)\n" +
+                         "\t\t\t\t\t(M) Metaskin ($25)\n" +
+                         "\t\t\t\t\t(C) Ceraskin ($50)\n";
             return menuString;
         }
 
@@ -71,9 +71,9 @@ namespace cis237_assignment3
             Console.Clear();
             Console.ResetColor();
             menuString = "\n\n\n\n\n\t\t\t\t\t--- SELECT A COLOR ---\n\n" +
-                         "\t\t\t\t\t(B) Black \n" +
-                         "\t\t\t\t\t(R) Red\n" +
-                         "\t\t\t\t\t(W) White\n";
+                         "\t\t\t\t\t(B) Black ($10)\n" +
+                         "\t\t\t\t\t(R) Red ($15)\n" +
+                         "\t\t\t\t\t(W) White ($20)\n";
             return menuString;
         }
 
@@ -216,7 +216,7 @@ namespace cis237_assignment3
         {
             Console.ResetColor();
             Console.Write("\n\n\t\t\t\t\t");
-            Console.Write("How many languages would you like to support? ");
+            Console.Write("How many languages ($15 each) would you like to support? ");
             string languages = Console.ReadLine();
             int number;
             if (!int.TryParse(languages, out number)) languages = "invalid";
@@ -256,7 +256,7 @@ namespace cis237_assignment3
         private string ChooseToolboxOption()
         {
             Console.Write("\n\n\t\t\t\t\t");
-            Console.Write("Would you like to add a toolbox to this model (Y/N)? ");
+            Console.Write("Would you like to add a toolbox ($15) to this model (Y/N)? ");
             string toolboxChoice = Console.ReadLine().ToUpper();
             switch (toolboxChoice)
             {
@@ -281,7 +281,7 @@ namespace cis237_assignment3
         private string ChooseArmOption()
         {
             Console.Write("\n\n\t\t\t\t\t");
-            Console.Write("Would you like to add a utility arm to this model (Y/N)? ");
+            Console.Write("Would you like to add a utility arm ($10) to this model (Y/N)? ");
             string arm = Console.ReadLine().ToUpper();
             switch (arm)
             {
@@ -306,7 +306,7 @@ namespace cis237_assignment3
         private string ChooseComputerConnectionOption()
         {
             Console.Write("\n\n\t\t\t\t\t");
-            Console.Write("Would you like to add a computer connection to this model (Y/N)? ");
+            Console.Write("Would you like to add a computer connection ($20) to this model (Y/N)? ");
             string compcnxn = Console.ReadLine().ToUpper();
             switch (compcnxn)
             {
@@ -331,7 +331,7 @@ namespace cis237_assignment3
         private string[] ChooseJanitorDroidSpecifics()
         {
             Console.Write("\n\n\t\t\t\t\t");
-            Console.Write("Would you like to add a trash compactor to this model (Y/N)? ");
+            Console.Write("Would you like to add a trash compactor ($15) to this model (Y/N)? ");
             string compactorChoice = Console.ReadLine().ToUpper();
             switch (compactorChoice)
             {
@@ -372,7 +372,7 @@ namespace cis237_assignment3
         private string[] ChooseAstromechDroidSpecifics()
         {
             Console.Write("\n\n\t\t\t\t\t");
-            Console.Write("Would you like to add a fire extinguisher to this model (Y/N)? ");
+            Console.Write("Would you like to add a fire extinguisher ($35) to this model (Y/N)? ");
             string extinguisherChoice = Console.ReadLine().ToUpper();
             switch (extinguisherChoice)
             {
