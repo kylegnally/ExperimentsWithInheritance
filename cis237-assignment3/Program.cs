@@ -60,6 +60,8 @@ namespace cis237_assignment3
                         string[] allDroids = collection.PrintTheDroidsInventory();
                         //aMenu.PrintDroidList(allDroids);
                         aMenu.Pause();
+
+                        // be sure to add a prompt for user interaction with printed list
                         DisplayMainMenu();
                         break;
 
